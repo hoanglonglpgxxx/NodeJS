@@ -8,4 +8,6 @@
 //each module has its own scope
 require('./a');
 require('./b');
+const item1 = require('./item');
+console.log(item1.getName());
 
