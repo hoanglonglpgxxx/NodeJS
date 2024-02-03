@@ -7,10 +7,17 @@
 //module scope
 //each module has its own scope
 // require('./a');
-const dItem = require('./d');
-console.log(dItem.getName());
-dItem.setName('Name 2');
-console.log(dItem.getName());
+// const dItem = require('./d');
+// console.log(dItem.getName());
+// dItem.setName('Name 2');
+// console.log(dItem.getName());
 
-const newdItem = require('./d');
-console.log(newdItem.getName());
+//! Import Export Patterns
+const math = require('./math');
+
+//deconstruct object math
+const { add, sub } = math;
+console.log(add(3, 2));
+
+const data = require('./data.json');
+console.log(data, data.name);
