@@ -6,8 +6,11 @@
 
 //module scope
 //each module has its own scope
-require('./a');
-require('./b');
-const item1 = require('./item');
-console.log(item1.getName());
+// require('./a');
+const dItem = require('./d');
+console.log(dItem.getName());
+dItem.setName('Name 2');
+console.log(dItem.getName());
 
+const newdItem = require('./d');
+console.log(newdItem.getName());
