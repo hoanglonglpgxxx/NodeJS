@@ -13,11 +13,12 @@
 // console.log(dItem.getName());
 
 //! Import Export Patterns
-const math = require('./math');
+/* const math = require('./math');
 
 //deconstruct object math
 const { add, sub } = math;
 console.log(add(3, 2));
 
 const data = require('./data.json');
-console.log(data, data.name);
+console.log(data, data.name); */
+
