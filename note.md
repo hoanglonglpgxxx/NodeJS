@@ -5,3 +5,8 @@
 
 - syc callback: callback thực hiện ngay lập tức là sync callback
 - async callback: callback dùng để tiếp tục thực thi code sau khi 1 tác vụ bất đồng bộ hoàn thành
+
+//Streams: trong node, xử lý luồng data theo từng phần khi data đến thay vì đợi toàn bộ luồng data khả dụng
+ex: xem video utube, xem từng phần trong khi data còn lại đổ về qua thời gian
+
+//Buffers: quyết định được thời điểm gửi data để xử lý
