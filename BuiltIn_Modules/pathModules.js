@@ -1,4 +1,3 @@
-const { log } = require('node:console');
 const path = require('node:path');
 
 //?path.basename : lấy tên file
