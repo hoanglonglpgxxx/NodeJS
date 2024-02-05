@@ -22,3 +22,6 @@ console.log(add(3, 2));
 const data = require('./data.json');
 console.log(data, data.name); */
 
+/* const buffer = new Buffer.from('Long');
+buffer.write('asd');
+console.log(buffer.toString(),buffer.toJSON(),buffer); */
