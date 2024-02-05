@@ -11,4 +11,6 @@ ex: xem video utube, xem từng phần trong khi data còn lại đổ về qua 
 
 //Buffers: quyết định được thời điểm gửi data để xử lý
 
-- buffer nodejs chỉ có 7 slot?
+- buffer nodejs chỉ có 7 slot?, 64KB
+
+-
