@@ -2,39 +2,47 @@ const http = require('node:http');
 const fs = require('node:fs');
 const url = require('node:url');
 
-const data = fs.readFileSync('./farm.json', 'utf-8');
+//--------------OWN MODULES----------
+const replaceTempate = require('../modules/replaceTemplate');
+
+//-----------------CODE---------------
 const tempOverview = fs.readFileSync('./templates/template-overview.html', 'utf-8');
 const tempCard = fs.readFileSync('./templates/template-card.html', 'utf-8');
 const tempProduct = fs.readFileSync('./templates/template-product.html', 'utf-8');
+
+const data = fs.readFileSync('./farm.json', 'utf-8');
 const dataObj = JSON.parse(data);
+
 
 const server = http.createServer((req, res) => {
 
-    // console.log(req.url);
-
+    const { query, pathname } = url.parse(req.url, true);
     const pathName = req.url;
-
-    /*  if (pathName === '/overview') {
-         res.end('This is OVERVIEW');
-     } else if (pathName === '/product') {
-         res.end('This is product');
-     } else if (pathName === '/product') {
-         res.end('This is product');
-     } else {
+    /*
          res.writeHead(200, { 'Content-Type': 'text/html' });
          fs.createReadStream('./index.html').pipe(res);
          const html = fs.readFileSync('./index.html', 'utf-8');
          res.end(html);
-     } */
+      */
 
     // Overview page 
-    if (pathName === '/overview' || pathName === '/') {
-        res.end('overview page');
+    if (pathname === '/overview' || pathname === '/') {
+        res.writeHead(200, { 'Content-type': 'text/html' });
+
+        const cardsHtml = dataObj.map(el => replaceTempate(tempCard, el)).join('');
+        const output = tempOverview.replace('{%PRODUCT_CARDS%}', cardsHtml);
+
+        res.end(output);
+
         // Product page
-    } else if (pathName === '/product') {
-        res.end('product page');
+    } else if (pathname === '/product') {
+        res.writeHead(200, { 'Content-type': 'text/html' });
+        const product = dataObj[query.id];
+        const output = replaceTempate(tempProduct, product);
+        res.end(output);
+
         // API
-    } else if (pathName === '/api') {
+    } else if (pathname === '/api') {
         res.writeHead(200, { 'Content-type': 'application/json' });
         res.end(data);
 

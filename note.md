@@ -15,4 +15,5 @@ ex: xem video utube, xem từng phần trong khi data còn lại đổ về qua 
 
 - buffer nodejs chỉ có 7 slot?, 64KB
 
-- vid 12
+VID 16
+-PARSE VARIABLE FROM URL
