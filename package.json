@@ -4,14 +4,16 @@
   "description": "Learning NodeJS",
   "main": "index.js",
   "scripts": {
+    "start": "nodemon Express/app.js",
     "start1": "nodemon BuiltIn_Modules/httpModule.js"
   },
   "author": "Mits",
   "license": "ISC",
   "dependencies": {
+    "express": "^4.18.2",
     "slugify": "^1.6.6"
   },
   "devDependencies": {
-    "nodemon": "^3.0.3"
+    "nodemon": "^3.1.0"
   }
 }

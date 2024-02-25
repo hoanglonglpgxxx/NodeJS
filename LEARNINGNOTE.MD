@@ -22,4 +22,10 @@
 - Domain name is not real address, DNS will convert domain name to real IP address
 
 xem lại vid 3 folder 4 về threads
-VID 4
+xem lại folder 4-5 để nắm base
+
+robust: mạnh
+
+\*\*EXPRESS
+
+- sử dụng mvc architecture
