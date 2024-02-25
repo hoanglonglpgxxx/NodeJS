@@ -24,6 +24,8 @@
 xem lại vid 3 folder 4 về threads
 xem lại folder 4-5 để nắm base
 
+vid 5 folder 6
+
 robust: mạnh
 
 \*\*EXPRESS
