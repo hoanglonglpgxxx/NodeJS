@@ -63,3 +63,5 @@ orchestration: cấu hình tự động
 - use http methods
 - thường send data as json (key of json must be String)
 - be stateless: all state handled on the client(not on server) aka request must contain all the information necessary to process a certain request.The server should not have to remember previous requests
+
+-middleware thực thi theo thứ tự khai báo
