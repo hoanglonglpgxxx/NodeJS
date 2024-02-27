@@ -29,8 +29,4 @@ app.delete('/api/v1/tours/:id', deleteTour); */
 
 app.use('/api/v1/tours', tourRouter); //method : Mounting Router
 app.use('/api/v1/user', userRouter);
-//4. Start server
-const port = 3000;
-app.listen(port, () => {
-    console.log(`server running on port ${port}`);
-});
+module.exports = app;

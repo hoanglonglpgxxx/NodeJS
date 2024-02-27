@@ -4,7 +4,7 @@
   "description": "Learning NodeJS",
   "main": "index.js",
   "scripts": {
-    "start": "nodemon Express/app.js",
+    "start": "nodemon Express/server.js",
     "start1": "nodemon BuiltIn_Modules/httpModule.js"
   },
   "author": "Mits",
