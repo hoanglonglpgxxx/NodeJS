@@ -7,8 +7,9 @@ const userRouter = require('./routes/userRoutes');
 
 //1. Middleware
 app.use(morgan('dev')); //get detail of request
-
 app.use(express.json());//express.json là 1 middleware
+app.use(express.static(`${__dirname}/public`));
+
 
 app.use((req, res, next) => {
     req.requestTime = new Date().toISOString();
