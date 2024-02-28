@@ -4,8 +4,8 @@
   "description": "Learning NodeJS",
   "main": "index.js",
   "scripts": {
-    "start": "nodemon Express/server.js",
-    "start1": "nodemon BuiltIn_Modules/httpModule.js"
+    "start:dev": "nodemon Express/server.js",
+    "start:prod": "NODE_ENV=production nodemon Express/server.js"
   },
   "author": "Mits",
   "license": "ISC",

@@ -6,7 +6,10 @@ const tourRouter = require('./routes/tourRoutes');
 const userRouter = require('./routes/userRoutes');
 
 //1. Middleware
-app.use(morgan('dev')); //get detail of request
+console.log(process.env.NODE_ENV);
+if (process.env.NODE_ENV === 'development') {
+    app.use(morgan('dev'));//get detail of request
+}
 app.use(express.json());//express.json là 1 middleware
 app.use(express.static(`${__dirname}/public`));
 

@@ -67,3 +67,4 @@ orchestration: cấu hình tự động
 - Middleware thực thi theo thứ tự khai báo
 - Param Middleware
 - Environment variables
+- cơ chế process, process.env trên toàn bộ tiến trình
