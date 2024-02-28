@@ -16,3 +16,4 @@
 
 - nếu có: npm update ten_package
 - xóa: npm uninstall ten_package
+- Cấu hình env: NODE_ENV=tên_env nodemon tên_file
