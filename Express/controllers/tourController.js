@@ -13,7 +13,6 @@ exports.checkID = (req, res, next, val) => {
 };
 
 exports.checkBody = (req, res, next) => {
-    console.log(req.params);
     if (!req.name || !req.price) {
         return res.status(404).json({
             'status': 'fail',
@@ -24,7 +23,6 @@ exports.checkBody = (req, res, next) => {
 };
 
 exports.getAllTours = (req, res) => {
-    console.log(req.requestTime, 123);
     res.status(200).json({
         status: 'success',
         requestedAt: req.requestTime,
@@ -59,7 +57,7 @@ exports.getTour = (req, res) => {
 
 exports.createTour = (req, res) => {
     const newId = toursData[toursData.length - 1].id + 1;
-    const newTour = Object.assign({ id: newId }, req.body);
+    const newTour = { id: newId, ...req.body };
 
     toursData.push(newTour);
     fs.writeFile(`${__dirname}/data/tours-simple.json`, JSON.stringify(toursData), err => {

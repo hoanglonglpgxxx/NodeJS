@@ -1,0 +1,9 @@
+- Collections in noSQL ~ tables in SQL
+- Documents in noSQL ~ rows in SQL
+- Fields in mongoDB ~ columns in SQL
+- Flexible
+- Performant
+- Use BSON(like JSON but documents typed)
+- Mongo has Embedded documents(Denormalizing): quicker to access
+- Must contain uniqueID - like primary key in SQL
+- Max size?
