@@ -44,6 +44,7 @@ folder 6 vid11 : 3:15
 
 robust: mạnh
 orchestration: cấu hình tự động
+accountability: nhiệm vụ/trách nhiệm
 
 \*\*EXPRESS
 
