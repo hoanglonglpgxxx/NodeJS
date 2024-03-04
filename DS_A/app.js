@@ -42,5 +42,5 @@ function test(arr1, arr2) {
         }
     }
     return false;
-}//->O(a+b) vì 2 loop không lồng nhau nữa
+}//->Time Colexity: O(a+b) vì 2 loop không lồng nhau nữa
 test(arr1, arr2);
