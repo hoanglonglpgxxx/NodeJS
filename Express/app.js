@@ -6,7 +6,7 @@ const tourRouter = require('./routes/tourRoutes');
 const userRouter = require('./routes/userRoutes');
 
 //1. Middleware
-//console.log(process.env.NODE_ENV);
+console.log(process.env, process.env.USERNAME);
 if (process.env.NODE_ENV === 'development') {
     app.use(morgan('dev'));//get detail of request
 }
