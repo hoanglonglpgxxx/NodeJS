@@ -28,8 +28,6 @@ xem lại folder 4-5 để nắm base-
 !!! tìm hiểu event loop
 https://anonystick.com/blog-developer/he-thong-eventloop-trong-nodejs-cach-hoat-dong-va-cach-su-dung-voi-loi-giai-thich-can-ke-2022122761300007
 
-folder 6 vid11 : 3:15
-
 ---
 
 \*\*eventLoop
@@ -69,3 +67,7 @@ accountability: nhiệm vụ/trách nhiệm
 - Param Middleware
 - Environment variables
 - cơ chế process, process.env trên toàn bộ tiến trình
+
+folder 8 vid 5 00:00
+
+- Mongoose is an Object Data Modelling lib for MongoDB and Node.js, a higher level of abstraction
