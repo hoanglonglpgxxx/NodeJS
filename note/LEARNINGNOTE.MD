@@ -75,6 +75,6 @@ accountability: nhiệm vụ/trách nhiệm
 * application: code that is only concerned abt the application's implementation, not the underlying business problem that r trying to solve(ex: showing and selling tours), cocerned abt managing requests and responses, only abt the app's more technical aspects(KEEP IN CONTROLLER)
 * business lgoic: related to business rules, how the business works & business needs(ex: creating new tours in the DB) (KEEP IN MODEL)
 
-folder 8
+folder 8 vid 8
 
 - Protocol and host list are required in "mongodb+srv: lỗi này do bản của mongoose
