@@ -66,8 +66,15 @@ accountability: nhiệm vụ/trách nhiệm
 - Middleware thực thi theo thứ tự khai báo
 - Param Middleware
 - Environment variables
-- cơ chế process, process.env trên toàn bộ tiến trình
-
-folder 8 vid 5 00:00
+  //? cơ chế process, process.env trên toàn bộ tiến trình
 
 - Mongoose is an Object Data Modelling lib for MongoDB and Node.js, a higher level of abstraction
+
+- MVC architecture ????, separate application logic and business logic
+
+* application: code that is only concerned abt the application's implementation, not the underlying business problem that r trying to solve(ex: showing and selling tours), cocerned abt managing requests and responses, only abt the app's more technical aspects(KEEP IN CONTROLLER)
+* business lgoic: related to business rules, how the business works & business needs(ex: creating new tours in the DB) (KEEP IN MODEL)
+
+folder 8
+
+- Protocol and host list are required in "mongodb+srv: lỗi này do bản của mongoose

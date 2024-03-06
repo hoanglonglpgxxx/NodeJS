@@ -1,7 +1,10 @@
-const fs = require('fs');
+// const fs = require('fs');
 
-const toursData = JSON.parse(fs.readFileSync(`${__dirname}/../data/tours-simple.json`));
+const Tour = require('../models/tourModel');
 
+//const toursData = JSON.parse(fs.readFileSync(`${__dirname}/../data/tours-simple.json`)); FOR TESTING PURPOSE
+
+/* EXAMPLE WHEN TESTING WITH MIDDLEWARE(alrd avail when using mongoose)
 exports.checkID = (req, res, next, val) => {
     if (req.params.id * 1 > toursData.length) {
         return res.status(404).json({
@@ -10,7 +13,7 @@ exports.checkID = (req, res, next, val) => {
         });
     };
     next();
-};
+}; 
 
 exports.checkBody = (req, res, next) => {
     if (!req.name || !req.price) {
@@ -21,23 +24,21 @@ exports.checkBody = (req, res, next) => {
     };
     next();
 };
-
+*/
 exports.getAllTours = (req, res) => {
     res.status(200).json({
         status: 'success',
         requestedAt: req.requestTime,
-        results: toursData.length,
+        /* results: toursData.length,
         data: {
             tours: toursData
-        }
+        } */
     });
 };
 
 exports.getTour = (req, res) => {
-    console.log(req.params);
-
     const id = req.params.id * 1; //turn string to number
-    const tour = toursData.find(el => el.id === id);
+    /* const tour = toursData.find(el => el.id === id);
 
     // if (id > toursData.length) {
     if (!tour) {
@@ -52,10 +53,11 @@ exports.getTour = (req, res) => {
         data: {
             tour
         }
-    });
+    }); */
 };
 
-exports.createTour = (req, res) => {
+exports.createTour = async (req, res) => {
+    /* TEST WITH STATIC JSON FILE
     const newId = toursData[toursData.length - 1].id + 1;
     const newTour = { id: newId, ...req.body };
 
@@ -67,8 +69,24 @@ exports.createTour = (req, res) => {
                 tour: newTour
             }
         });
-    });
-    // res.send('Done');
+    }); */
+
+    try {
+        //tìm hiểu .create(),.save(),xem lại section async await
+        const newTour = await Tour.create(req.body);
+
+        res.status(201).json({
+            status: 'success',
+            data: {
+                tour: newTour
+            }
+        });
+    } catch (err) {
+        res.status(400).json({
+            status: 'fail',
+            message: 'Invalid data sent'
+        });
+    }
 };
 
 exports.updateTour = (req, res) => {

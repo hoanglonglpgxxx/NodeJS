@@ -7,32 +7,17 @@ const DB = process.env.DATABASE.replace(
     '<PASSWORD>', process.env.DATABASE_PASSWORD
 );
 
-mongoose
-    // .connect(process.env.DATABASE_LOCAL, {
-    .connect(DB, {
-        useNewUrlParser: true,
-        useCreateIndex: true,
-        useUnifiedTopology: true
-    }).then(() => { console.log('DB CONNNECED'); });
+
+mongoose.connect(
+    DB,
+    { useFindAndModify: false, useUnifiedTopology: true, useNewUrlParser: true, useCreateIndex: true },
+    (err) => {
+        if (err) return console.log("Error: ", err);
+        console.log("MongoDB Connection -- Ready state is:", mongoose.connection.readyState);
+    }
+);
 
 
-const tourSchema = new mongoose.Schema({
-    name: {
-        type: String,
-        required: [true, 'Tour must have a name'],
-        unique: true
-    },
-    rating: {
-        type: Number,
-        default: 3.5
-    },
-    price: {
-        type: Number,
-        required: [true, 'Tour must have a price']
-    },
-});
-
-const Tour = mongoose.model('Tour', tourSchema); //this is a model
 
 const app = require('./app');
 

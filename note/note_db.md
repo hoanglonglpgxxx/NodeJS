@@ -33,3 +33,5 @@
 - quit(): quit mongo shell
 
 -CÓ CẦN CONNECT MONGO SHELL KHÔNG?
+
+- trong postman, tab variables, nếu để value trong initial value thì khi làm team người khác cũng sẽ thấy value đó
