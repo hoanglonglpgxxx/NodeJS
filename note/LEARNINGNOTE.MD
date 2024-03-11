@@ -80,4 +80,4 @@ accountability: nhiệm vụ/trách nhiệm
 
 - delete in JS: an operator, remove a property from an obj
 
-folder 8 vid 13
+folder 8 vid 15

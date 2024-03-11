@@ -28,16 +28,34 @@ exports.checkBody = (req, res, next) => {
 exports.getAllTours = async (req, res) => {
     try {
         //BUILD QUERY
+
+        //1A.Filtering
         const queryObj = { ...req.query };
         const excludedFields = ['page', 'sort', 'limit', 'fields'];
         //remove các field để query không lỗi
         excludedFields.forEach(el => delete queryObj[el]); //delete in JS: an operator, remove a property from an obj
 
-        console.log(req.query, queryObj);
+
+        //1B. Advanced Filtering
+        let queryStr = JSON.stringify(queryObj);
+        queryStr = queryStr.replace(/\b(gte|gt|lte|lt)\b/g, match => `$${match}`);
+
+        let query = Tour.find(JSON.parse(queryStr));
+
+        //2. Sorting: nếu sort=tên_field thì sort tăng dần, -tên_field thì sort giảm dần
+        if (req.query.sort) {
+            const sortBy = req.query.sort.split(',').join(' '); //join các sort field
+            console.log(sortBy);
+            query = query.sort(sortBy);
+        } else {
+            query = query.sort({ price: 'desc' });//default sort theo createdAt DESC
+            //c2. query = query.sort('-price'); //desc
+            //c3. query = query.sort({price: -1}); //desc
+        }
+
+        console.log(JSON.parse(queryStr));
 
         //EXECUTE QUERY
-        const query = Tour.find(queryObj);
-
         const tours = await query;
         res.status(200).json({
             status: 'success',
