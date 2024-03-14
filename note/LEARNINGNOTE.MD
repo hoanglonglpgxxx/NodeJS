@@ -80,4 +80,22 @@ accountability: nhiệm vụ/trách nhiệm
 
 - delete in JS: an operator, remove a property from an obj
 
-folder 8 vid 15
+  folder 8 vid 15
+
+  -end của 1 middleware luôn là next();
+
+Official Flutter Documentation and Codelabs: The official Flutter website provides comprehensive documentation and interactive codelabs that cover various aspects of Flutter development. These resources are free to access and can be a great starting point for beginners. You can find them at Flutter.dev.
+
+YouTube Tutorials: There are numerous free tutorials available on YouTube that cover Flutter development. Channels like "The Net Ninja," "Reso Coder," "Academind," and "Flutter Community" offer high-quality tutorials for beginners and advanced users alike.
+
+Udemy Free Courses: Udemy occasionally offers free courses on Flutter development. Keep an eye out for promotions or search specifically for free Flutter courses on the platform.
+
+FreeCodeCamp: FreeCodeCamp, an online learning platform, occasionally offers courses on Flutter development. Check their website or YouTube channel for any available resources.
+
+GitHub Repositories and Open Source Projects: Many developers share their Flutter projects and tutorials on GitHub for free. You can explore repositories, study the code, and even contribute to open source projects to enhance your Flutter skills.
+
+Flutter Community: The Flutter community is very active and supportive. Websites like Flutter Community (https://fluttercommunity.dev/) aggregate various resources, including articles, tutorials, and open source projects contributed by the community.
+
+Flutter Bootcamp by London App Brewery: While not entirely free, the London App Brewery occasionally offers scholarships for their Flutter bootcamp. Keep an eye on their website or social media for any opportunities.
+
+Remember to verify the credibility and quality of the resources you choose to ensure you're learning accurate and up-to-date information. Additionally, participating in online forums like the Flutter subreddit or the Flutter Discord channel can help you connect with other learners and developers for support and guidance.

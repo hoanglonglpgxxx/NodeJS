@@ -1,5 +1,4 @@
-// const fs = require('fs');
-
+const fs = require('node:fs');
 const Tour = require('../models/tourModel');
 
 //const toursData = JSON.parse(fs.readFileSync(`${__dirname}/../data/tours-simple.json`)); FOR TESTING PURPOSE
@@ -25,6 +24,20 @@ exports.checkBody = (req, res, next) => {
     next();
 };
 */
+
+function writeLog(req, res) {
+    let logString = ([req.requestTime, req.method, req.originalUrl, res.statusCode].join(' '));
+    logString = `${logString}\r\n`;
+    fs.appendFile("./api_log.log", logString, (err) => err && console.error(err));
+}
+
+exports.aliasTopTours = (req, res, next) => {
+    req.query.limit = '5';
+    req.query.sort = '-ratingsAverage, price';
+    req.query.fields = 'name, price, ratingsAverage, summary, difficulty';
+    next();
+};
+
 exports.getAllTours = async (req, res) => {
     try {
         //BUILD QUERY
@@ -45,7 +58,6 @@ exports.getAllTours = async (req, res) => {
         //2. Sorting: nếu sort=tên_field thì sort tăng dần, -tên_field thì sort giảm dần
         if (req.query.sort) {
             const sortBy = req.query.sort.split(',').join(' '); //join các sort field
-            console.log(sortBy);
             query = query.sort(sortBy);
         } else {
             query = query.sort({ price: 'desc' });//default sort theo createdAt DESC
@@ -53,8 +65,24 @@ exports.getAllTours = async (req, res) => {
             //c3. query = query.sort({price: -1}); //desc
         }
 
-        console.log(JSON.parse(queryStr));
+        //3. Received Fields limiting 
+        if (req.query.fields) {
+            const fields = req.query.fields.split(',').join(' ');
+            query = query.select(fields);
+        } else {
+            query = query.select('-__v');//exculde __v from output
+        }
 
+        //4. Pagination
+        const page = req.query.page * 1 || 1;
+        const limit = req.query.limit * 1 || 20;
+        const skip = (page - 1) * limit;
+        query = query.skip(skip).limit(limit);
+
+        if (req.query.page) {
+            const totalTours = await Tour.countDocuments();
+            if (skip >= totalTours) throw new Error('This page does not exist');
+        }
         //EXECUTE QUERY
         const tours = await query;
         res.status(200).json({
@@ -70,6 +98,7 @@ exports.getAllTours = async (req, res) => {
             message: err
         });
     }
+    writeLog(req, res);
 };
 
 exports.getTour = async (req, res) => {
@@ -92,6 +121,7 @@ exports.getTour = async (req, res) => {
             message: err
         });
     }
+    writeLog(req, res);
 };
 
 exports.createTour = async (req, res) => {
@@ -125,6 +155,7 @@ exports.createTour = async (req, res) => {
             message: err
         });
     }
+    writeLog(req, res);
 };
 
 exports.updateTour = async (req, res) => {
@@ -148,8 +179,7 @@ exports.updateTour = async (req, res) => {
             message: 'Invalid data sent'
         });
     }
-
-
+    writeLog(req, res);
 };
 
 exports.deleteTour = async (req, res) => {
@@ -165,6 +195,7 @@ exports.deleteTour = async (req, res) => {
             message: 'Invalid data sent'
         });
     }
-
+    writeLog(req, res);
 };
+
 
