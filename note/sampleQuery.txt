@@ -1,0 +1,24 @@
+//updateMany year of startDates items 
+db.collection.updateMany(
+  { },
+  [
+    {
+      $set: {
+        "startDates": {
+          $map: {
+            input: "$startDates",
+            as: "date",
+            in: {
+              $dateToString: {
+                format: "%Y-%m-%dT%H:%M:%S.%LZ",
+                date: {
+                  $add: [ "$$date", 3*365*24*60*60*1000 ] // Add three years worth of milliseconds
+                }
+              }
+            }
+          }
+        }
+      }
+    }
+  ]
+)

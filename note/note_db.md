@@ -42,4 +42,11 @@
 - query.select('ten_field'): nếu có '-' trước tên field thì exclude field đó from output
 - ở schema thì thêm property 'select: false' để exclude from output by default
 
-//PIPELINE IN MONGODB
+//AGGREGATION PIPELINE IN MONGODB
+
+- dùng như 1 query bình thường, manipulate some data bằng stages
+- có thể dùng như hàm getTitle ở chỗ làm(chỉ link bảng với id, từ id lấy ra title)
+- stage $group: tính average các document với field được truyền vào trong \_id của $group
+- can repeat stages, response sẽ là kết quả sau tất cả stages
+
+//IMPORT DEV DATA: node Express/data/import-dev-data --import
