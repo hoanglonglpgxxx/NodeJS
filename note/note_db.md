@@ -41,3 +41,5 @@
 - đang add pagination = mongoose: skip(số_bản_ghi_skip{tức = số_bản_ghi_perPage x số_page - số_bản_ghi_perPage)}).skip(số_bản_ghi_perPage)
 - query.select('ten_field'): nếu có '-' trước tên field thì exclude field đó from output
 - ở schema thì thêm property 'select: false' để exclude from output by default
+
+//PIPELINE IN MONGODB

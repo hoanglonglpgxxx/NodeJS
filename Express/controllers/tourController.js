@@ -1,5 +1,7 @@
 const fs = require('node:fs');
 const Tour = require('../models/tourModel');
+//BUILD QUERY
+const APIFeatures = require('../utils/apiFeatures');
 
 //const toursData = JSON.parse(fs.readFileSync(`${__dirname}/../data/tours-simple.json`)); FOR TESTING PURPOSE
 
@@ -40,51 +42,14 @@ exports.aliasTopTours = (req, res, next) => {
 
 exports.getAllTours = async (req, res) => {
     try {
-        //BUILD QUERY
-
-        //1A.Filtering
-        const queryObj = { ...req.query };
-        const excludedFields = ['page', 'sort', 'limit', 'fields'];
-        //remove các field để query không lỗi
-        excludedFields.forEach(el => delete queryObj[el]); //delete in JS: an operator, remove a property from an obj
-
-
-        //1B. Advanced Filtering
-        let queryStr = JSON.stringify(queryObj);
-        queryStr = queryStr.replace(/\b(gte|gt|lte|lt)\b/g, match => `$${match}`);
-
-        let query = Tour.find(JSON.parse(queryStr));
-
-        //2. Sorting: nếu sort=tên_field thì sort tăng dần, -tên_field thì sort giảm dần
-        if (req.query.sort) {
-            const sortBy = req.query.sort.split(',').join(' '); //join các sort field
-            query = query.sort(sortBy);
-        } else {
-            query = query.sort({ price: 'desc' });//default sort theo createdAt DESC
-            //c2. query = query.sort('-price'); //desc
-            //c3. query = query.sort({price: -1}); //desc
-        }
-
-        //3. Received Fields limiting 
-        if (req.query.fields) {
-            const fields = req.query.fields.split(',').join(' ');
-            query = query.select(fields);
-        } else {
-            query = query.select('-__v');//exculde __v from output
-        }
-
-        //4. Pagination
-        const page = req.query.page * 1 || 1;
-        const limit = req.query.limit * 1 || 20;
-        const skip = (page - 1) * limit;
-        query = query.skip(skip).limit(limit);
-
-        if (req.query.page) {
-            const totalTours = await Tour.countDocuments();
-            if (skip >= totalTours) throw new Error('This page does not exist');
-        }
         //EXECUTE QUERY
-        const tours = await query;
+        const features = new APIFeatures(Tour.find(), req.query)
+            .filter()
+            .sort()
+            .limit()
+            .paginate();
+        const tours = await features.query;
+
         res.status(200).json({
             status: 'success',
             results: tours.length,

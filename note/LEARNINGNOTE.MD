@@ -80,8 +80,6 @@ accountability: nhiệm vụ/trách nhiệm
 
 - delete in JS: an operator, remove a property from an obj
 
-  folder 8 vid 15
-
   -end của 1 middleware luôn là next();
 
 Official Flutter Documentation and Codelabs: The official Flutter website provides comprehensive documentation and interactive codelabs that cover various aspects of Flutter development. These resources are free to access and can be a great starting point for beginners. You can find them at Flutter.dev.
@@ -99,3 +97,5 @@ Flutter Community: The Flutter community is very active and supportive. Websites
 Flutter Bootcamp by London App Brewery: While not entirely free, the London App Brewery occasionally offers scholarships for their Flutter bootcamp. Keep an eye on their website or social media for any opportunities.
 
 Remember to verify the credibility and quality of the resources you choose to ensure you're learning accurate and up-to-date information. Additionally, participating in online forums like the Flutter subreddit or the Flutter Discord channel can help you connect with other learners and developers for support and guidance.
+
+folder 8 vid 19
