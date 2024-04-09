@@ -21,3 +21,6 @@
 2024-03-17T08:49:08.230Z GET /api/v1/tours/monthly-plan 200
 2024-03-17T09:05:46.264Z GET /api/v1/tours?id=65f6b0cdc98c1c3e44dd222f 200
 2024-03-17T09:13:09.259Z GET /api/v1/tours?id=65f6b0cdc98c1c3e44dd222f 200
+2024-04-09T10:23:54.136Z GET /api/v1/tours?difficulty=easy&duration[gte]=5&fields=name,price,difficulty 200
+2024-04-09T10:24:24.756Z GET /api/v1/tours 200
+2024-04-09T10:28:43.840Z POST /api/v1/tours 201

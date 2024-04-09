@@ -53,6 +53,22 @@ const tourSchema = new mongoose.Schema({
         select: false
     },
     startDates: [Date]
+}, {
+    toJSON: {
+        virtuals: TransformStreamDefaultController
+    },
+    toObject: {
+        virtuals: TransformStreamDefaultController
+    },
+});
+
+tourSchema.virtual('durationWeeks').get(function () {
+    return this.duration / 7;
+});// getter
+
+//document middleware in mongoose, ONLY runs before .save() & .create()
+tourSchema.pre('save', function () {
+    console.log(this); //points to current document that affected
 });
 
 const Tour = mongoose.model('Tour', tourSchema); //this is a model
