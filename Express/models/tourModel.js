@@ -6,7 +6,10 @@ const tourSchema = new mongoose.Schema({
         type: String,
         trim: true,
         required: [true, 'Tour must have a name'],
-        unique: true
+        unique: true,
+        //maxlength, minlength ONLY AVAILABLE FOR STRING
+        maxlength: [255, 'A tour name must have less or equal than 255 characters'],
+        minlength: [15, 'A tour name must have more or equal than 15 characters']
     },
     slug: String,
     duration: {
@@ -20,11 +23,18 @@ const tourSchema = new mongoose.Schema({
     difficulty: {
         type: String,
         trim: true,
-        required: [true, 'Tour must have a difficulty']
+        required: [true, 'Tour must have a difficulty'],
+        //ENUM ONLY AVAILABLE FOR STRING
+        enum: {
+            values: ['easy', 'medium', 'difficult'],
+            message: 'Difficulty is either: easy, medium or difficult'
+        }
     },
     ratingsAverage: {
         type: Number,
-        default: 3.5
+        default: 3.5,
+        min: [1, 'Rating must be above 1.0'],
+        max: [5, 'Rating must be below 5.0']
     },
     ratingsQuantity: {
         type: Number,
@@ -34,7 +44,16 @@ const tourSchema = new mongoose.Schema({
         type: Number,
         required: [true, 'Tour must have a price']
     },
-    discountPrice: Number,
+    discountPrice: {
+        type: Number,
+        validate: {
+            validator: function (val) {
+                //this only points to current doc on NEW document creation
+                return val < this.price;
+            },
+            message: 'Discount price ({VALUE}) must be below regular price'//VALUE NÀY LÀ TỪ MONGOOSE
+        }
+    },
     summary: {
         type: String,
         trim: true,
@@ -115,6 +134,5 @@ tourSchema.pre('aggregate', function (next) {
     next();
 });
 
-console.log(333, this);
 const Tour = mongoose.model('Tour', tourSchema); //this is a model
 module.exports = Tour;
