@@ -8,7 +8,8 @@
   "main": "index.js",
   "scripts": {
     "start:dev": "nodemon Express/server.js",
-    "start:prod": "SET NODE_ENV=production & nodemon Express/server.js"
+    "start:prod": "SET NODE_ENV=production & nodemon Express/server.js",
+    "debug": "ndb Express/server.js"
   },
   "author": "Mits",
   "license": "ISC",
@@ -28,6 +29,7 @@
     "eslint-plugin-node": "^11.1.0",
     "eslint-plugin-prettier": "^5.1.3",
     "eslint-plugin-react": "^7.33.2",
+    "ndb": "^1.1.5",
     "nodemon": "^3.1.0",
     "prettier": "^3.2.5"
   }

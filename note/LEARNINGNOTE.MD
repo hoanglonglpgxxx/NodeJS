@@ -102,6 +102,8 @@ Remember to verify the credibility and quality of the resources you choose to en
 - do không trong DB nên không query được
   -> tên_schema.virutal('tên_field')
 
-- 4 types middleware in mongoose
-  -hook in nodejs
-  folder 8 vid 23
+-hook in nodejs???
+
+//ERROR HANDLING
+folder 9 vid 6
+-cài ndb: npm i ndb --save-dev
