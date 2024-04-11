@@ -103,4 +103,5 @@ Remember to verify the credibility and quality of the resources you choose to en
   -> tên_schema.virutal('tên_field')
 
 - 4 types middleware in mongoose
+  -hook in nodejs
   folder 8 vid 23

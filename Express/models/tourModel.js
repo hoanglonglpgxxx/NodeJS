@@ -1,4 +1,5 @@
 const mongoose = require('mongoose');
+const slugify = require('slugify');
 
 const tourSchema = new mongoose.Schema({
     name: {
@@ -7,6 +8,7 @@ const tourSchema = new mongoose.Schema({
         required: [true, 'Tour must have a name'],
         unique: true
     },
+    slug: String,
     duration: {
         type: Number,
         required: [true, 'Tour must have a duration']
@@ -52,7 +54,11 @@ const tourSchema = new mongoose.Schema({
         default: Date.now(),
         select: false
     },
-    startDates: [Date]
+    startDates: [Date],
+    secretTour: {
+        type: Boolean,
+        default: false
+    }
 }, {
     toJSON: {
         virtuals: TransformStreamDefaultController
@@ -66,11 +72,49 @@ tourSchema.virtual('durationWeeks').get(function () {
     return this.duration / 7;
 });// getter
 
-//document middleware in mongoose, ONLY runs before .save() & .create()
-tourSchema.pre('save', function () {
-    console.log(this); //points to current document that affected
+//DOCUMENT MIDDLEWARE in mongoose, ONLY runs before .save() & .create()
+//xử lý trước khi data được save vào db
+tourSchema.pre('save', function (next) {
+    //points to current process document 
+    this.slug = slugify(this.name, { lower: true });
+    next();
+});
+//có thể dùng multiple middleware cùng type
+/* tourSchema.pre('save', (next) => {
+    console.log('will save document...');
+    next();
 });
 
-const Tour = mongoose.model('Tour', tourSchema); //this is a model
+tourSchema.post('save', (doc, next) => {
+    //doc ở đây cũng point to current process document
+    console.log(doc);
+    next();
+}); */
 
+//QUERY MIDDLEWARE in mongoose
+//run before/after certain query executed
+tourSchema.pre(/^find/, function (next) {
+    //this points to current query
+    this.find({ secretTour: { $ne: true } });
+
+    this.start = Date.now();
+    next();
+});
+
+tourSchema.post(/^find/, function (docs, next) {
+    console.log(`Query took ${Date.now() - this.start} ms!`);
+    // console.log(docs);
+    next();
+});
+
+//AGGREGATION MIDDLEWARE in mongoose
+tourSchema.pre('aggregate', function (next) {
+    //this points to aggregation obj
+    this.pipeline().unshift({ $match: { secretTour: { $ne: true } } });
+    // console.log(this.pipeline());
+    next();
+});
+
+console.log(333, this);
+const Tour = mongoose.model('Tour', tourSchema); //this is a model
 module.exports = Tour;
