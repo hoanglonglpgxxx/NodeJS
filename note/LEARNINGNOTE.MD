@@ -105,5 +105,5 @@ Remember to verify the credibility and quality of the resources you choose to en
 -hook in nodejs???
 
 //ERROR HANDLING
-folder 9 vid 6
+folder 9 vid 7
 -cài ndb: npm i ndb --save-dev
