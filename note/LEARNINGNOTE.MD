@@ -107,3 +107,5 @@ Remember to verify the credibility and quality of the resources you choose to en
 //ERROR HANDLING
 folder 9 vid 7
 -cài ndb: npm i ndb --save-dev
+//tìm hiểu .create(),.save(),xem lại section async await
+//đang lỗi fail thì không ghi log
