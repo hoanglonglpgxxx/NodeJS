@@ -109,3 +109,4 @@ folder 9 vid 7
 -cài ndb: npm i ndb --save-dev
 //tìm hiểu .create(),.save(),xem lại section async await
 //đang lỗi fail thì không ghi log
+//sửa lại logic, cho hàm writeLog vào hàm catchAsync, khi có class appError thì lấy status code và msg từ apperror

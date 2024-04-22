@@ -3,6 +3,7 @@ const Tour = require('../models/tourModel');
 //BUILD QUERY
 const catchAsync = require('../utils/catchAsync');
 const APIFeatures = require('../utils/apiFeatures');
+const AppError = require('../utils/appError');
 
 //const toursData = JSON.parse(fs.readFileSync(`${__dirname}/../data/tours-simple.json`)); FOR TESTING PURPOSE
 
@@ -41,7 +42,7 @@ exports.aliasTopTours = (req, res, next) => {
     next();
 };
 
-exports.getAllTours = catchAsync(async (req, res) => {
+exports.getAllTours = catchAsync(async (req, res, next) => {
     //EXECUTE QUERY
     const features = new APIFeatures(Tour.find(), req.query)
         .filter()
@@ -60,12 +61,13 @@ exports.getAllTours = catchAsync(async (req, res) => {
     writeLog(req, res);
 });
 
-exports.getTour = catchAsync(async (req, res) => {
-    //const id = req.params.id * 1; //turn string to number
-    /* const tour = toursData.find(el => el.id === id);
-     */
-
+exports.getTour = catchAsync(async (req, res, next) => {
     const tour = await Tour.findById(req.params.id);
+    writeLog(req, res);
+
+    if (!tour) {
+        return next(new AppError(`No tour founded with ID ${req.params.id}`, 404));
+    }
     //có thể thay bằng query này : Tour.findOne({_id: req.params.id})
     res.status(200).json({
         status: 'success',
@@ -73,11 +75,10 @@ exports.getTour = catchAsync(async (req, res) => {
             tour
         }
     });
-    writeLog(req, res);
 });
 
 
-exports.createTour = catchAsync(async (req, res) => {
+exports.createTour = catchAsync(async (req, res, next) => {
     /* TEST WITH STATIC JSON FILE
     const newId = toursData[toursData.length - 1].id + 1;
     const newTour = { id: newId, ...req.body };
@@ -103,7 +104,7 @@ exports.createTour = catchAsync(async (req, res) => {
     });
 });
 
-exports.updateTour = catchAsync(async (req, res) => {
+exports.updateTour = catchAsync(async (req, res, next) => {
     const tour = await Tour.findByIdAndUpdate(req.params.id, req.body, {
         new: true,
         runValidators: true
@@ -117,15 +118,21 @@ exports.updateTour = catchAsync(async (req, res) => {
     });
 });
 
-exports.deleteTour = catchAsync(async (req, res) => {
-    await Tour.findByIdAndDelete(req.params.id);
+exports.deleteTour = catchAsync(async (req, res, next) => {
+    const tour = await Tour.findByIdAndDelete(req.params.id);
+    writeLog(req, res);
+
+    if (!tour) {
+        return next(new AppError(`No tour founded with ID ${req.params.id}`, 404));
+    }
+
     res.status(204).json({
         status: 'success',
         data: null
     });
 });
 
-exports.getToursStats = catchAsync(async (req, res) => {
+exports.getToursStats = catchAsync(async (req, res, next) => {
     const stats = await Tour.aggregate([
         {
             $match: { ratingsAverage: { $gte: 4.5 } }
