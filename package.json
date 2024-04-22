@@ -8,7 +8,7 @@
   "main": "index.js",
   "scripts": {
     "start:dev": "nodemon Express/server.js",
-    "start:prod": "SET NODE_ENV=production & nodemon Express/server.js",
+    "start:prod": "set NODE_ENV=production && nodemon Express/server.js",
     "debug": "ndb Express/server.js"
   },
   "author": "Mits",
