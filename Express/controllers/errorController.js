@@ -5,6 +5,20 @@ const handleCastErrorDB = err => {
     return new AppError(message, 400);
 };
 
+const handleDuplicateFieldsDB = err => {
+    const val = err.errmsg.match(/(["'])(\\?.)*?\1/)[0];
+    const message = `Duplicate fields: ${val}`;
+    return new AppError(message, 400);
+};
+
+const handleValidationErrorDB = err => {
+    //từ mảng error, lấy các value là mảng error của từng field -> lấy message trong các mảng đó
+    const errors = Object.values(err.errors).map(el => el.message);
+    console.log(errors);
+    const message = `Invalid input data: ${errors.join('. ')}`;
+    return new AppError(message, 400);
+};
+
 const sendErrorDev = (err, res) => {
     res.status(err.statusCode).json({
         status: err.status,
@@ -23,7 +37,7 @@ const sendErrorProd = (err, res) => {
         });
         //Programming or other unknown err: dont leak err details
     } else {
-        console.error('ERROR ', err);
+        console.error('ERROR 💥', err);
 
         res.status(500).json({
             status: 'error',
@@ -39,10 +53,11 @@ module.exports = (err, req, res, next) => {
     if (process.env.NODE_ENV === 'development') {
         sendErrorDev(err, res);
     } else if (process.env.NODE_ENV === 'production') {
-        let errorDB = { ...err };
+        let error = err;
 
-        if (errorDB.name === 'CastError') errorDB = handleCastErrorDB(errorDB);
-
-        sendErrorProd(errorDB, res);
+        if (error.name === 'CastError') error = handleCastErrorDB(error);
+        if (error.code === 11000) error = handleDuplicateFieldsDB(error);
+        if (error.name === 'ValidationError') error = handleValidationErrorDB(error);
+        sendErrorProd(error, res);
     }
 };
