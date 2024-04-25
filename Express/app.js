@@ -39,8 +39,7 @@ app.all('*', (req, res, next) => { //handling unhandled routes
     next(new AppError(`Can't find ${req.originalUrl} on this server`, 404));
 });
 
-//GLOBAL ERROR HANDLING MIDDLEWARE
-//tự nhảy vào middleware này khi lỗi
+//GLOBAL ERROR HANDLING MIDDLEWARE, tự nhảy vào middleware này khi lỗi
 app.use(globalErrorHandler);
 
 module.exports = app;

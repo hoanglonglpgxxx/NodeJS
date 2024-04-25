@@ -8,19 +8,25 @@ const DB = process.env.DATABASE.replace(
 );
 
 
-mongoose.connect(
-    DB,
-    { useFindAndModify: false, useUnifiedTopology: true, useNewUrlParser: true, useCreateIndex: true },
-    (err) => {
-        if (err) return console.log("Error: ", err);
-        console.log("MongoDB Connection -- Ready state is:", mongoose.connection.readyState);
-    }
-);
+mongoose
+    .connect(
+        DB,
+        { useFindAndModify: false, useUnifiedTopology: true, useNewUrlParser: true, useCreateIndex: true }
+    ).then(() => console.log('DB connected'));
 
 const app = require('./app');
 // console.log(app.get('env'));
 
 const port = process.env.PORT || 3000;
-app.listen(port, () => {
+const server = app.listen(port, () => {
     console.log(`server running on port ${port}`);
+});
+
+//catch event unhandledRejection, xử lý cho async code, khi có lỗi chưa xử lý sẽ trigger event này
+process.on('unhandledRejection', err => {
+    console.log(err.name, err.message);
+    console.log('UNHANDLER REJECTION! Shutting down.....');
+    server.close(() => { //đóng server rồi mới dừng các request
+        process.exit(1);
+    });
 });
