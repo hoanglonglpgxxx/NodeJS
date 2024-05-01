@@ -105,8 +105,16 @@ Remember to verify the credibility and quality of the resources you choose to en
 -hook in nodejs???
 
 //ERROR HANDLING
-folder 10 vid 2
+folder 10 vid 4
 -cài ndb: npm i ndb --save-dev
 //tìm hiểu .create(),.save(),xem lại section async await
 //đang lỗi fail thì không ghi log
 //sửa lại logic - cơ chế ghi log, cho hàm writeLog vào hàm catchAsync, khi có class appError thì lấy status code và msg từ apperror
+
+MOST POWERFUL PASSWORD IS THE LONGEST ONE
+
+//bắt event khi save và field nào đó bị modified
+userSchema.pre('save', function (next) {
+if(this.isModified('ten_field')){//code}
+});
+//cài bcrypt npm i -S bcrypt

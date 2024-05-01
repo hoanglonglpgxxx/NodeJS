@@ -32,7 +32,7 @@ app.patch('/api/v1/tours/:id', updateTour);
 app.delete('/api/v1/tours/:id', deleteTour); */
 
 app.use('/api/v1/tours', tourRouter); //method : Mounting Router
-app.use('/api/v1/user', userRouter);
+app.use('/api/v1/users', userRouter);
 
 //run for all HTTP METHODS
 app.all('*', (req, res, next) => { //handling unhandled routes
