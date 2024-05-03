@@ -105,8 +105,8 @@ Remember to verify the credibility and quality of the resources you choose to en
 -hook in nodejs???
 
 //ERROR HANDLING
-folder 10 vid 4
--cài ndb: npm i ndb --save-dev
+folder 10 vid 7
+
 //tìm hiểu .create(),.save(),xem lại section async await
 //đang lỗi fail thì không ghi log
 //sửa lại logic - cơ chế ghi log, cho hàm writeLog vào hàm catchAsync, khi có class appError thì lấy status code và msg từ apperror
@@ -117,4 +117,11 @@ MOST POWERFUL PASSWORD IS THE LONGEST ONE
 userSchema.pre('save', function (next) {
 if(this.isModified('ten_field')){//code}
 });
-//cài bcrypt npm i -S bcrypt
+-cài ndb: npm i ndb --save-dev
+-cài bcrypt npm i -S bcrypt
+
+//JSON WEB TOKEN (jwt) authentication: READ ABT THIS
+-cài npm i jsonwebtoken
+
+- Khi query, select field không được show ở response (bị set select: false trong schema) , cần thêm + vào trước tên field
+  ex: User.findOne({email: email}).select('+password');

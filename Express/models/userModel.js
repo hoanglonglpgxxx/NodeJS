@@ -30,6 +30,7 @@ const userSchema = new mongoose.Schema({
         type: String,
         required: [true, 'Please provide password'],
         minlength: 8,
+        select: false //ẩn field password ở output khi request
     },
     confirmPassword: {
         type: String,
