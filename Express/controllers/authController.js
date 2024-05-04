@@ -2,6 +2,7 @@ const jwt = require('jsonwebtoken');
 const User = require('../models/userModel');
 const catchAsync = require('../utils/catchAsync');
 const AppError = require('../utils/appError');
+const webhookController = require('./webhookController');
 
 exports.signup = catchAsync(async (req, res, next) => {
     const newUser = await User.create({
@@ -15,6 +16,7 @@ exports.signup = catchAsync(async (req, res, next) => {
     const token = jwt.sign({ id: newUser._id }, process.env.JWT_SECRET, {
         expiresIn: process.env.JWT_EXPIRES_IN //có time để tự log out user sau 1 thời gian
     });
+    webhookController.sendToDiscord(req, res, next);
 
     res.status(201).json({
         status: 'success',
@@ -39,7 +41,7 @@ exports.login = catchAsync(async (req, res, next) => {
         console.log(222);
     }
     console.log(user);
-
+    webhookController.sendToDiscord(req, res, next);
     //3. If everything ok, send token to client
     const token = '';
     res.status(200).json({
