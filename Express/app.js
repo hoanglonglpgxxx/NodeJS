@@ -1,5 +1,6 @@
 const express = require('express');
 const morgan = require('morgan');
+const path = require('path');
 
 const app = express();
 const AppError = require('./utils/appError');
@@ -12,7 +13,7 @@ if (process.env.NODE_ENV === 'development') {
     app.use(morgan('dev'));//get detail of request
 }
 app.use(express.json());//express.json là 1 middleware
-app.use(express.static(`${__dirname}/public`));
+app.use(express.static(path.join(__dirname, 'public')));
 
 app.use((req, res, next) => {
     req.requestTime = new Date().toISOString();

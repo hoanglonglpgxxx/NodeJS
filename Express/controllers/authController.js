@@ -4,6 +4,10 @@ const catchAsync = require('../utils/catchAsync');
 const AppError = require('../utils/appError');
 const webhookController = require('./webhookController');
 
+const signToken = id => jwt.sign({ id: id }, process.env.JWT_SECRET, {
+    expiresIn: process.env.JWT_EXPIRES_IN //có time để tự log out user sau 1 thời gian
+});
+
 exports.signup = catchAsync(async (req, res, next) => {
     const newUser = await User.create({
         name: req.body.name,
@@ -13,10 +17,9 @@ exports.signup = catchAsync(async (req, res, next) => {
     });
 
     //Login sau khi signup 
-    const token = jwt.sign({ id: newUser._id }, process.env.JWT_SECRET, {
-        expiresIn: process.env.JWT_EXPIRES_IN //có time để tự log out user sau 1 thời gian
-    });
     webhookController.sendToDiscord(req, res, next);
+
+    const token = signToken(newUser._id);
 
     res.status(201).json({
         status: 'success',
@@ -35,15 +38,13 @@ exports.login = catchAsync(async (req, res, next) => {
     }
     //2. Check if user exists && password is correct
     const user = await User.findOne({ email: email }).select('+password');
-    if (password === user.password) {
-        console.log(1111);
-    } else {
-        console.log(222);
+    if (!user || !(await user.correctPassword(password, user.password))) {
+        return next(new AppError('Incorrect email or password', 401));
     }
-    console.log(user);
+
     webhookController.sendToDiscord(req, res, next);
     //3. If everything ok, send token to client
-    const token = '';
+    const token = signToken(user._id);
     res.status(200).json({
         status: 'success',
         token

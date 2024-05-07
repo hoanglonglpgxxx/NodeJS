@@ -1,7 +1,6 @@
 const http = require('node:http');
 const fs = require('node:fs');
 const url = require('node:url');
-const slugify = require('slugify');
 
 //--------------OWN MODULES----------
 const replaceTempate = require('../modules/replaceTemplate');
@@ -19,7 +18,6 @@ const dataObj = JSON.parse(data);
 const server = http.createServer((req, res) => {
 
     const { query, pathname } = url.parse(req.url, true);
-    const pathName = req.url;
     /*
          res.writeHead(200, { 'Content-Type': 'text/html' });
          fs.createReadStream('./index.html').pipe(res);
