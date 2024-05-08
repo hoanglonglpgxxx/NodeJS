@@ -2,10 +2,10 @@ const https = require('https');
 
 exports.sendToDiscord = (req, res, next) => {
     const headers = JSON.parse(JSON.stringify(req.headers));
-    delete headers['connection'];
+    delete headers.connection;
     delete headers['accept-encoding'];
     delete headers['postman-token'];
-    delete headers['accept'];
+    delete headers.accept;
     const postData = JSON.stringify({
         content: [new Date(req.requestTime).toLocaleString(), req.method, req.originalUrl, res.statusCode, JSON.stringify(req.body), JSON.stringify(headers)].join('    ')
     });
