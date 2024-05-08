@@ -125,5 +125,5 @@ if(this.isModified('ten_field')){//code}
 - global quick search vs code: %ssearch_val
   fix lỗi gitguardian
 
-folder 10 vid 7
+folder 10 vid 9
 //đang có 1 vấn đề, lúc call /signup nếu lấy req.body thì bị lộ pass, cũng không phải password sau mã hóa

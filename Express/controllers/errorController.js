@@ -5,16 +5,17 @@ const handleCastErrorDB = err => {
     return new AppError(message, 400);
 };
 
-const handleDuplicateFieldsDB = err => {
-    const val = err.errmsg.match(/(["'])(\\?.)*?\1/)[0];
-    const message = `Duplicate fields: ${val}`;
-    return new AppError(message, 400);
-};
+const handleDuplicateFieldsDB = err => new AppError('Invalid token Please login again', 400);
 
 const handleValidationErrorDB = err => {
     //từ mảng error, lấy các value là mảng error của từng field -> lấy message trong các mảng đó
     const errors = Object.values(err.errors).map(el => el.message);
-    console.log(errors);
+    const message = `Invalid input data: ${errors.join('. ')}`;
+    return new AppError(message, 400);
+};
+
+const handleJWTTokenErrorDB = err => {
+    const errors = Object.values(err.errors).map(el => el.message);
     const message = `Invalid input data: ${errors.join('. ')}`;
     return new AppError(message, 400);
 };
@@ -58,6 +59,7 @@ module.exports = (err, req, res, next) => {
         if (error.name === 'CastError') error = handleCastErrorDB(error);
         if (error.code === 11000) error = handleDuplicateFieldsDB(error);
         if (error.name === 'ValidationError') error = handleValidationErrorDB(error);
+        if (error.name === 'JsonWebTokenError') error = handleJWTTokenErrorDB(error);
         sendErrorProd(error, res);
     }
 };

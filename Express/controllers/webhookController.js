@@ -1,8 +1,13 @@
 const https = require('https');
 
 exports.sendToDiscord = (req, res, next) => {
+    const headers = JSON.parse(JSON.stringify(req.headers));
+    delete headers['connection'];
+    delete headers['accept-encoding'];
+    delete headers['postman-token'];
+    delete headers['accept'];
     const postData = JSON.stringify({
-        content: [req.requestTime, req.method, req.originalUrl, res.statusCode, JSON.stringify(req.body)].join('    ')
+        content: [new Date(req.requestTime).toLocaleString(), req.method, req.originalUrl, res.statusCode, JSON.stringify(req.body), JSON.stringify(headers)].join('    ')
     });
 
     const discordWebhookUrl = process.env.DISCORD_CALL_API_WEBHOOK;
