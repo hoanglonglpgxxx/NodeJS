@@ -1,12 +1,26 @@
 const AppError = require('../utils/appError');
 
+/**
+ * Handle cast DB Error
+ * @param {Object} err
+ * @return {Object} AppError
+ */
 const handleCastErrorDB = err => {
     const message = `Invalid ${err.path}: ${err.value}`;
     return new AppError(message, 400);
 };
-
+/**
+ * Handle duplicate fields DB Error
+ * @param {Object} err
+ * @return {Object} AppError
+ */
 const handleDuplicateFieldsDB = err => new AppError('Invalid token Please login again', 400);
 
+/**
+ * Handle  validatation DB Error
+ * @param {Object} err
+ * @return {Object} AppError
+ */
 const handleValidationErrorDB = err => {
     //từ mảng error, lấy các value là mảng error của từng field -> lấy message trong các mảng đó
     const errors = Object.values(err.errors).map(el => el.message);
@@ -14,12 +28,23 @@ const handleValidationErrorDB = err => {
     return new AppError(message, 400);
 };
 
+/**
+ * Handle JWT Token Error
+ * @param {Object} err
+ * @return {Object} AppError
+ */
 const handleJWTTokenErrorDB = err => {
     const errors = Object.values(err.errors).map(el => el.message);
     const message = `Invalid input data: ${errors.join('. ')}`;
     return new AppError(message, 400);
 };
 
+/**
+ * Send Error in Development
+ * @param {Object} err
+ * @param {Object} res
+ * @return {Object} AppError
+ */
 const sendErrorDev = (err, res) => {
     res.status(err.statusCode).json({
         status: err.status,
@@ -29,6 +54,12 @@ const sendErrorDev = (err, res) => {
     });
 };
 
+/**
+ * Send Error in Production
+ * @param {Object} err
+ * @param {Object} res
+ * @return {Object} AppError
+ */
 const sendErrorProd = (err, res) => {
     //Operation/trusted err: send msg to client
     if (err.isOperational) {
