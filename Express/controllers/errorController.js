@@ -35,6 +35,17 @@ const handleValidationErrorDB = err => {
  */
 const handleJWTTokenErrorDB = err => {
     const errors = Object.values(err.errors).map(el => el.message);
+    const message = `Expired token, please login again: ${errors.join('. ')}`;
+    return new AppError(message, 400);
+};
+
+/**
+ * Handle expired JWT Token Error
+ * @param {Object} err 
+ * @returns {Object} AppError
+ */
+const handleTokenExpiredErrorDB = err => {
+    const errors = Object.values(err.errors).map(el => el.message);
     const message = `Invalid input data: ${errors.join('. ')}`;
     return new AppError(message, 400);
 };
@@ -91,6 +102,7 @@ module.exports = (err, req, res, next) => {
         if (error.code === 11000) error = handleDuplicateFieldsDB(error);
         if (error.name === 'ValidationError') error = handleValidationErrorDB(error);
         if (error.name === 'JsonWebTokenError') error = handleJWTTokenErrorDB(error);
+        if (error.name === 'TokenExpiredError') error = handleTokenExpiredErrorDB(error);
         sendErrorProd(error, res);
     }
 };

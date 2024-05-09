@@ -10,7 +10,7 @@ exports.sendToDiscord = (req, res, next) => {
         content: [new Date(req.requestTime).toLocaleString(), req.method, req.originalUrl, res.statusCode, JSON.stringify(req.body), JSON.stringify(headers)].join('    ')
     });
 
-    const discordWebhookUrl = process.env.DISCORD_CALL_API_WEBHOOK;
+    const discordWebhookUrl = process.env.DISCORD_WEBHOOK;
 
     const options = {
         hostname: 'discord.com',
