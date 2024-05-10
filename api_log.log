@@ -95,3 +95,43 @@
 2024-05-08T10:20:23.000Z GET /api/v1/tours 200
 2024-05-08T10:26:36.726Z GET /api/v1/tours 200
 2024-05-08T10:29:32.575Z GET /api/v1/tours 200
+2024-05-10T06:13:51.680Z GET /api/v1/tours/65f6b6525220624a948a7fc4 200
+2024-05-10T06:17:22.810Z GET /api/v1/tours/65f6b6525220624a948a7fc4 200
+
+   400
+2024-05-10T06:22:01.300Z GET /api/v1/tours/65f6b6525220624a948a7asd [object Object]
+2024-05-10T06:25:34.793Z GET /api/v1/tours/65f6b6525220624a948a7asd 200
+2024-05-10T06:26:01.855Z GET /api/v1/tours/65f6b6525220624a948a7asd 
+2024-05-10T06:27:39.660Z GET /api/v1/tours/65f6b6525220624a948a7asd 
+Fri May 10 2024 GET /api/v1/tours/65f6b6525220624a948a7asd 
+Date:  Fri May 10 2024 METHOD:  GET /api/v1/tours/65f6b6525220624a948a7asd 
+Date: Fri May 10 2024 ;METHOD:  GET /api/v1/tours/65f6b6525220624a948a7asd 
+Date: Fri May 10 202 METHOD:  GET /api/v1/tours/65f6b6525220624a948a7asd 
+Date: Fri May 10 2024 METHOD:  GET /api/v1/tours/65f6b6525220624a948a7asd 
+Date: Fri May 10 2024 METHOD: GET /api/v1/tours/65f6b6525220624a948a7asd 
+Date: | Fri May 10 2024 | METHOD: | GET | /api/v1/tours/65f6b6525220624a948a7asd | 
+Fri May 10 2024 | GET | /api/v1/tours/65f6b6525220624a948a7asd | 
+Fri May 10 2024 | GET | /api/v1/tours/65f6b6525220624a948a7asd | 
+Fri May 10 2024 | GET | /api/v1/tours/3512312312 | 
+Fri May 10 2024 | GET | /api/v1/tours/3512312312 | 
+Fri May 10 2024 | GET | /api/v1/tours | 
+2024-05-10T10:05:37.891Z GET /api/v1/tours 200
+Fri May 10 2024 | GET | /api/v1/tours | 
+Fri May 10 2024 | GET | /api/v1/tours | 
+Invalid Date |  |  | 
+Fri May 10 2024 | GET | /api/v1/tours | 
+Fri May 10 2024 | GET | /api/v1/tours | 200
+Fri May 10 2024 | 17:10:18 GMT+0700 (Indochina Time) | GET | /api/v1/tours | 
+Fri May 10 2024 | 17:10:18 GMT+0700 (Indochina Time) | GET | /api/v1/tours | 200
+Fri May 10 2024 | 5:11:18 PM | GET | /api/v1/tours | 
+Fri May 10 2024 | 5:11:18 PM | GET | /api/v1/tours | 200
+Fri May 10 2024 | 5:11:38 PM | GET | /api/v1/tours | 
+Fri May 10 2024 | 5:13:00 PM | GET | /api/v1/tours | 
+Fri May 10 2024 | 5:13:15 PM | GET | /api/v1/tours | 
+Fri May 10 2024 | 5:14:11 PM | GET | /api/v1/tours | 200
+Fri May 10 2024 | 5:14:38 PM | GET | /api/v1/tours | 200
+Fri May 10 2024 | 5:15:26 PM | GET | /api/v1/tours | 200
+Fri May 10 2024 | 5:16:52 PM | GET | /api/v1/tours | 200
+Fri May 10 2024 | 5:17:40 PM | GET | /api/v1/tours | 200
+Fri May 10 2024 | 5:20:11 PM | GET | /api/v1/tours | 400
+Fri May 10 2024 | 5:20:29 PM | GET | /api/v1/tours | 400

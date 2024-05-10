@@ -11,7 +11,7 @@ process.on('uncaughtException', err => {
 dotenv.config({ path: './config.env' });
 
 const DB = process.env.DATABASE.replace(
-    '<PASSWORD>', process.env.DATABASE_PASSWORD
+    '<PASSWORD>', encodeURIComponent(process.env.DATABASE_PASSWORD)
 );
 
 
