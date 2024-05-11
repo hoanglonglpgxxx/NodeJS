@@ -1,9 +1,11 @@
-const fs = require('node:fs');
 const Tour = require('../models/tourModel');
+const writeLog = require('../utils/writeLog');
+
 //BUILD QUERY
 const catchAsync = require('../utils/catchAsync');
 const APIFeatures = require('../utils/apiFeatures');
 const AppError = require('../utils/appError');
+
 
 //const toursData = JSON.parse(fs.readFileSync(`${__dirname}/../data/tours-simple.json`)); FOR TESTING PURPOSE
 
@@ -28,12 +30,6 @@ exports.checkBody = (req, res, next) => {
     next();
 };
 */
-
-function writeLog(req, res) {
-    let logString = ([req.requestTime, req.method, req.originalUrl, res.statusCode].join(' '));
-    logString = `${logString}\r\n`;
-    fs.appendFile("./api_log.log", logString, (err) => err && console.error(err));
-}
 
 exports.aliasTopTours = (req, res, next) => {
     req.query.limit = '5';

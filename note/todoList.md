@@ -5,3 +5,4 @@
 FIX LỖI KHI RUN SERVER
 DeprecationWarning: The URL mongodb://mitsngeither:Abc.2010%40@ac-w1rf4ag-shard-00-00.rfwzvbn.mongodb.net:27017,ac-w1rf4ag-shard-00-01.rfwzvbn.mongodb.net:27017,ac-w1rf4ag-shard-00-02.rfwzvbn.mongodb.net:27017/tours-test?authSource=admin&replicaSet=atlas-u74ctn-shard-0&retryWrites=true&w=majority&ssl=true is invalid. Future versions of Node.js will throw an error.
 (Use `node --trace-deprecation ...` to show where the warning was created)
+//writelog vẫn chưa có hướng để run khi return new appError()

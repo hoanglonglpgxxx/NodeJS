@@ -135,3 +135,24 @@ Fri May 10 2024 | 5:16:52 PM | GET | /api/v1/tours | 200
 Fri May 10 2024 | 5:17:40 PM | GET | /api/v1/tours | 200
 Fri May 10 2024 | 5:20:11 PM | GET | /api/v1/tours | 400
 Fri May 10 2024 | 5:20:29 PM | GET | /api/v1/tours | 400
+Sat May 11 2024 | 4:01:53 PM | GET | /api/v1/tours | 400
+Sat May 11 2024 | 4:02:26 PM | GET | /api/v1/tours | 400
+Sat May 11 2024 | 4:02:29 PM | GET | /api/v1/tours | 400
+Sat May 11 2024 | 4:03:04 PM | GET | /api/v1/tours | 400
+Sat May 11 2024 | 4:21:25 PM | GET | /api/v1/tours | 400 | 
+Sat May 11 2024 | 4:22:18 PM | GET | /api/v1/tours | 400 | 
+Sat May 11 2024 | 4:23:20 PM | GET | /api/v1/tours | 400 | 
+Sat May 11 2024 | 4:24:11 PM | GET | /api/v1/tours | 400 | 
+Sat May 11 2024 | 4:24:12 PM | GET | /api/v1/tours | 400 | 
+Sat May 11 2024 | 4:24:39 PM | GET | /api/v1/tours | 400 | 
+2024-05-11T09:25:37.183Z GET /api/v1/tours 200
+2024-05-11T09:26:23.918Z GET /api/v1/tours 200
+2024-05-11T09:30:03.360Z GET /api/v1/tours 200
+2024-05-11T09:30:20.108Z GET /api/v1/tours 200
+2024-05-11T09:32:00.912Z GET /api/v1/tours 200
+Sat May 11 2024 | 4:32:44 PM | GET | /api/v1/tours | 200 | 
+Sat May 11 2024 | 4:34:01 PM | GET | /api/v1/tours | 200 | 
+Sat May 11 2024 | 4:52:46 PM | POST | /api/v1/users/signup | 400 | 
+Sat May 11 2024 | 4:54:21 PM | POST | /api/v1/users/signup | 400 | 
+Sat May 11 2024 | 4:55:47 PM | POST | /api/v1/users/signup | 400 | 
+Sat May 11 2024 | 4:56:28 PM | POST | /api/v1/users/signup | 400 | 
