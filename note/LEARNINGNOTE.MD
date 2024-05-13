@@ -121,4 +121,9 @@ if(this.isModified('ten_field')){//code}
 - global quick search vs code: %ssearch_val
   fix lỗi gitguardian
 
-folder 10 vid 9
+folder 10 vid 12
+
+- admin default pass: Abc.2010@
+- user default pass: 123456789
+- guide default pass: 1234567890
+- lead-guide default pass: 123456789999

@@ -156,3 +156,4 @@ Sat May 11 2024 | 4:52:46 PM | POST | /api/v1/users/signup | 400 |
 Sat May 11 2024 | 4:54:21 PM | POST | /api/v1/users/signup | 400 | 
 Sat May 11 2024 | 4:55:47 PM | POST | /api/v1/users/signup | 400 | 
 Sat May 11 2024 | 4:56:28 PM | POST | /api/v1/users/signup | 400 | 
+Mon May 13 2024 | 5:16:05 PM | DELETE | /api/v1/tours/66178a7ebfcdec32bcb529db | 200 | 

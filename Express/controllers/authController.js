@@ -15,7 +15,8 @@ exports.signup = catchAsync(async (req, res, next) => {
         email: req.body.email,
         password: req.body.password,
         confirmPassword: req.body.confirmPassword,
-        lastPasswordChangeTime: req.body.lastPasswordChangeTime
+        lastPasswordChangeTime: req.body.lastPasswordChangeTime,
+        role: req.body.role
     });
 
     //Login sau khi signup 
@@ -44,9 +45,10 @@ exports.login = catchAsync(async (req, res, next) => {
         return next(new AppError('Incorrect email or password', 401));
     }
 
-    webhookController.sendToDiscord(req, res, next);
     //3. If everything ok, send token to client
     const token = signToken(user._id);
+    res.token = token;
+    webhookController.sendToDiscord(req, res, next);
     res.status(200).json({
         status: 'success',
         token
@@ -78,3 +80,10 @@ exports.protect = catchAsync(async (req, res, next) => {
     req.user = currentUser;
     next();
 });
+
+exports.restrictRole = (...roles) => (req, res, next) => {
+    if (!roles.includes(req.user.role)) {
+        return next(new AppError('You do not have permission to perform this action', 403));
+    }
+    next();
+};

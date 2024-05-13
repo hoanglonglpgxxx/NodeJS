@@ -6,10 +6,18 @@ exports.sendToDiscord = (req, res, next) => {
     delete headers['accept-encoding'];
     delete headers['postman-token'];
     delete headers.accept;
+
+    const body = { ...req.body };
+    if (Object.prototype.hasOwnProperty.call(body, 'password')) {
+        delete body.password;
+        Object.assign(body, { JWT: res.token });
+    }
+
     const postData = JSON.stringify({
-        content: [new Date(req.requestTime).toLocaleString(), req.method, req.originalUrl, res.statusCode, JSON.stringify(req.body), JSON.stringify(headers)].join('    ')
+        content: `${new Date(req.requestTime).toLocaleString()}    ${req.method}    ${req.originalUrl}    ${res.statusCode}    ${JSON.stringify(body)}    ${JSON.stringify(headers)}`
     });
 
+    console.log(res, body);
     const discordWebhookUrl = process.env.DISCORD_WEBHOOK;
 
     const options = {
