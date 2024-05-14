@@ -1,5 +1,6 @@
 const mongoose = require('mongoose');
 const bcrypt = require('bcrypt');
+const crypto = require('crypto');
 
 const EMAIL_REG_EXP = /^[a-zA-Z0-9]([A-Za-z0-9_-]|([.])(?!\2)){1,63}@[a-zA-Z0-9_-]{2,250}(\.[a-zA-Z0-9]{2,4}){1,3}$/;
 
@@ -49,6 +50,8 @@ const userSchema = new mongoose.Schema({
             message: 'Passwords do not match'
         }
     },
+    passwordResetToken: String,
+    passwordResetExpires: Date,
     lastPasswordChangeTime: Date
 });
 
@@ -78,6 +81,16 @@ userSchema.methods.afterChangePassword = function (JWTTimestamp) {
         return JWTTimestamp < changedTimestamp;//TRUE: changed, FALSE: not changed
     }
     return false;
+};
+
+userSchema.methods.createPasswordResetToken = function () {
+    const resetToken = crypto.randomBytes(32).toString('hex');
+
+    this.passwordResetToken = crypto.createHash('sha256').update(resetToken).digest('hex');
+    this.passwordResetExpires = Date.now() + 10 * 60 * 1000;
+    console.log({ resetToken }, this);
+
+    return resetToken;
 };
 
 const User = mongoose.model('User', userSchema); //this is a model
