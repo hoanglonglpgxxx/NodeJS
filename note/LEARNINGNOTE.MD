@@ -127,3 +127,6 @@ folder 10 vid 12
 - user default pass: 123456789
 - guide default pass: 1234567890
 - lead-guide default pass: 123456789999
+
+- cài nodemailer: npm i nodemailer
+- set value của 1 field là undefined thì trong DB sẽ tự remove field đó

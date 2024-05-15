@@ -71,6 +71,14 @@ userSchema.pre('save', async function (next) {
     }
 });
 
+userSchema.pre('save', function (next) {
+    if (!this.isModified('password') || this.isNew) return next(); //isNew là prop trong mongoose, mark là new document
+
+    this.lastPasswordChangeTime = Date.now() - 1000;
+    console.log(1, this.lastPasswordChangeTime);
+    return next();
+});
+
 userSchema.methods.correctPassword = async function (candidatePassword, userPassword) {
     return await bcrypt.compare(candidatePassword, userPassword);
 };
@@ -88,7 +96,6 @@ userSchema.methods.createPasswordResetToken = function () {
 
     this.passwordResetToken = crypto.createHash('sha256').update(resetToken).digest('hex');
     this.passwordResetExpires = Date.now() + 10 * 60 * 1000;
-    console.log({ resetToken }, this);
 
     return resetToken;
 };
