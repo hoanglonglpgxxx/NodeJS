@@ -1,6 +1,4 @@
 const Tour = require('../models/tourModel');
-const writeLog = require('../utils/writeLog');
-
 //BUILD QUERY
 const catchAsync = require('../utils/catchAsync');
 const APIFeatures = require('../utils/apiFeatures');
@@ -54,12 +52,10 @@ exports.getAllTours = catchAsync(async (req, res, next) => {
             tours: tours
         }
     });
-    writeLog(req, res);
 });
 
 exports.getTour = catchAsync(async (req, res, next) => {
     const tour = await Tour.findById(req.params.id);
-    writeLog(req, res);
 
     if (!tour) {
         return next(new AppError(`No tour founded with ID ${req.params.id}`, 404));
@@ -116,7 +112,6 @@ exports.updateTour = catchAsync(async (req, res, next) => {
 
 exports.deleteTour = catchAsync(async (req, res, next) => {
     const tour = await Tour.findByIdAndDelete(req.params.id);
-    writeLog(req, res);
 
     if (!tour) {
         return next(new AppError(`No tour founded with ID ${req.params.id}`, 404));

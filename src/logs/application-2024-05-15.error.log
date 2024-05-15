@@ -1,0 +1,4 @@
+function createFormatWrap(opts) {
+    return new Format(opts);
+  } - [error] - undefined - undefined - 400 - Token is invalid or has expired - 
+2024-05-15 17:41:41.718 PM - [error] - undefined - undefined - 400 - Token is invalid or has expired - 

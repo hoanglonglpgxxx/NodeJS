@@ -129,4 +129,5 @@ folder 10 vid 12
 - lead-guide default pass: 123456789999
 
 - cài nodemailer: npm i nodemailer
+- cài winston:npm i winston --save
 - set value của 1 field là undefined thì trong DB sẽ tự remove field đó
