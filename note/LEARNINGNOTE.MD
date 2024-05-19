@@ -63,12 +63,8 @@ accountability: nhiệm vụ/trách nhiệm
 - thường send data as json (key of json must be String)
 - be stateless: all state handled on the client(not on server) aka request must contain all the information necessary to process a certain request.The server should not have to remember previous requests
 
-- Middleware thực thi theo thứ tự khai báo
-- Param Middleware
-- Environment variables
+- !!!! Middleware thực thi theo thứ tự khai báo
   //? cơ chế process, process.env trên toàn bộ tiến trình
-
-- Mongoose is an Object Data Modelling lib for MongoDB and Node.js, a higher level of abstraction
 
 - MVC architecture ????, separate application logic and business logic
 
@@ -77,26 +73,6 @@ accountability: nhiệm vụ/trách nhiệm
 
 - Protocol and host list are required in "mongodb+srv: lỗi này do bản của mongoose
 - đọc các query method của mongoose
-
-- delete in JS: an operator, remove a property from an obj
-
-  -end của 1 middleware luôn là next();
-
-Official Flutter Documentation and Codelabs: The official Flutter website provides comprehensive documentation and interactive codelabs that cover various aspects of Flutter development. These resources are free to access and can be a great starting point for beginners. You can find them at Flutter.dev.
-
-YouTube Tutorials: There are numerous free tutorials available on YouTube that cover Flutter development. Channels like "The Net Ninja," "Reso Coder," "Academind," and "Flutter Community" offer high-quality tutorials for beginners and advanced users alike.
-
-Udemy Free Courses: Udemy occasionally offers free courses on Flutter development. Keep an eye out for promotions or search specifically for free Flutter courses on the platform.
-
-FreeCodeCamp: FreeCodeCamp, an online learning platform, occasionally offers courses on Flutter development. Check their website or YouTube channel for any available resources.
-
-GitHub Repositories and Open Source Projects: Many developers share their Flutter projects and tutorials on GitHub for free. You can explore repositories, study the code, and even contribute to open source projects to enhance your Flutter skills.
-
-Flutter Community: The Flutter community is very active and supportive. Websites like Flutter Community (https://fluttercommunity.dev/) aggregate various resources, including articles, tutorials, and open source projects contributed by the community.
-
-Flutter Bootcamp by London App Brewery: While not entirely free, the London App Brewery occasionally offers scholarships for their Flutter bootcamp. Keep an eye on their website or social media for any opportunities.
-
-Remember to verify the credibility and quality of the resources you choose to ensure you're learning accurate and up-to-date information. Additionally, participating in online forums like the Flutter subreddit or the Flutter Discord channel can help you connect with other learners and developers for support and guidance.
 
 - Virtual props: khai báo ở schema, có return nhưng không lưu trong DB, getter function của virtual props phải là func thường, not arrow func DO CẦN THIS
 - do không trong DB nên không query được
@@ -110,11 +86,8 @@ MOST POWERFUL PASSWORD IS THE LONGEST ONE
 userSchema.pre('save', function (next) {
 if(this.isModified('ten_field')){//code}
 });
--cài ndb: npm i ndb --save-dev
--cài bcrypt npm i -S bcrypt
 
 //JSON WEB TOKEN (jwt) authentication: READ ABT THIS
--cài npm i jsonwebtoken
 
 - Khi query, select field không được show ở response (bị set select: false trong schema) , cần thêm + vào trước tên field
   ex: User.findOne({email: email}).select('+password');
@@ -128,6 +101,6 @@ folder 10 vid 15
 - guide default pass: 1234567890
 - lead-guide default pass: 123456789999
 
-- cài nodemailer: npm i nodemailer
-- cài winston:npm i winston --save
+- cài nodemailer: npm i nodemailer,winston,jsonwebtoken
+
 - set value của 1 field là undefined thì trong DB sẽ tự remove field đó
