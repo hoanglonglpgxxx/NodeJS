@@ -94,7 +94,7 @@ if(this.isModified('ten_field')){//code}
 - global quick search vs code: %ssearch_val
   fix lỗi gitguardian
 
-folder 10 vid 15
+folder 10 vid 18
 
 - admin default pass: Abc.2010@
 - user default pass: 123456789
@@ -104,3 +104,5 @@ folder 10 vid 15
 - cài nodemailer: npm i nodemailer,winston,jsonwebtoken
 
 - set value của 1 field là undefined thì trong DB sẽ tự remove field đó
+
+update current user password, update current user data(except password)

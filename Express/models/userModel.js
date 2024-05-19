@@ -43,7 +43,7 @@ const userSchema = new mongoose.Schema({
         required: [true, 'Please provide confirm password'],
         minlength: 8,
         validate: {
-            //only works on create() or save()
+            //ONLY works on create() or save()
             validator: function (val) {
                 return val === this.password;
             },
