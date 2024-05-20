@@ -11,6 +11,12 @@ const signToken = id => jwt.sign({ id: id }, process.env.JWT_SECRET, {
     expiresIn: process.env.JWT_EXPIRES_IN //có time để tự log out user sau 1 thời gian
 });
 
+/**
+ * Tạo và gửi token cho user, sau đó trả về response
+ * @param {Object} user 
+ * @param {int} statusCode 
+ * @param {Object} res 
+ */
 const createSendToken = (user, statusCode, res) => {
     const token = signToken(user._id);
     res.status(statusCode).json({
