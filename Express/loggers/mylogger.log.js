@@ -2,7 +2,7 @@ const winston = require('winston');
 // const {format, createLogger, transports} = winston;
 require('winston-daily-rotate-file');
 
-const { combine, timestamp, json } = winston.format;
+const { combine, timestamp } = winston.format;
 
 class MyLogger {
     constructor() {

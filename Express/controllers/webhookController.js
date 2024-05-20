@@ -17,7 +17,6 @@ exports.sendToDiscord = (req, res, next) => {
         content: `${new Date(req.requestTime).toLocaleString()}    ${req.method}    ${req.originalUrl}    ${res.statusCode}    ${JSON.stringify(body)}    ${JSON.stringify(headers)}`
     });
 
-    console.log(res, body);
     const discordWebhookUrl = process.env.DISCORD_WEBHOOK;
 
     const options = {
