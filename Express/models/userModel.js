@@ -52,7 +52,12 @@ const userSchema = new mongoose.Schema({
     },
     passwordResetToken: String,
     passwordResetExpires: Date,
-    lastPasswordChangeTime: Date
+    lastPasswordChangeTime: Date,
+    active: {
+        type: Boolean,
+        default: true,
+        select: false
+    }
 });
 
 userSchema.pre('save', async function (next) {
@@ -77,6 +82,13 @@ userSchema.pre('save', function (next) {
     this.lastPasswordChangeTime = Date.now() - 1000;
     console.log(1, this.lastPasswordChangeTime);
     return next();
+});
+
+//Query middleware, use to hide inactive user
+userSchema.pre(/^find/, function (next) {
+    //this points to current query
+    this.find({ active: { $ne: false } });
+    next();
 });
 
 userSchema.methods.correctPassword = async function (candidatePassword, userPassword) {

@@ -35,6 +35,7 @@ app.delete('/api/v1/tours/:id', deleteTour); */
 app.use('/api/v1/tours', tourRouter); //method : Mounting Router
 app.use('/api/v1/users', userRouter);
 
+
 //run for all HTTP METHODS
 app.all('*', (req, res, next) => { //handling unhandled routes
     next(new AppError(`Can't find ${req.originalUrl} on this server`, 404));
@@ -42,5 +43,7 @@ app.all('*', (req, res, next) => { //handling unhandled routes
 
 //GLOBAL ERROR HANDLING MIDDLEWARE, tự nhảy vào middleware này khi lỗi
 app.use(globalErrorHandler);
+
+
 
 module.exports = app;
