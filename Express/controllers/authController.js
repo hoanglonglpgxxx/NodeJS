@@ -55,6 +55,23 @@ exports.login = catchAsync(async (req, res, next) => {
         return next(new AppError('Incorrect email or password', 401));
     }
 
+    //Maxium login attemps to 
+    const isMatch = (await user.correctPassword(password, user.password)) ? 1 : 0;
+    console.log(isMatch);
+    if (!isMatch) {
+        user.loginAttempts += 1;
+        await user.save();
+
+        if (user.loginAttempts >= process.env.MAX_LOGIN_ATTEMPTS) {
+            return next(new AppError('You have been locked out for 12 hours', 401));
+        }
+
+        return next(new AppError('Incorrect email or password 123', 401));
+    }
+
+    user.loginAttempts = 0;
+    await user.save();
+
     //3. If everything ok, send token to client
     createSendToken(user, 200, res);
     const token = signToken(user._id);

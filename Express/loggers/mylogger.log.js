@@ -26,7 +26,7 @@ class MyLogger {
                     datePattern: 'YYYY-MM-DD',
                     zippedArchive: true, //k đặt thì tệp log bị xóa luôn, đặt true thì zip để backup trước khi xóa
                     maxSize: '2m',
-                    maxFiles: '30d', //xóa file log cũ sau 14 ngày
+                    maxFiles: '2d', //xóa file log cũ sau 2 ngày
                     format: winston.format.combine(
                         timestamp({
                             format: 'YYYY-MM-DD HH:mm:ss.SSS A'
@@ -41,7 +41,7 @@ class MyLogger {
                     datePattern: 'YYYY-MM-DD',
                     zippedArchive: true, //k đặt thì tệp log bị xóa luôn, đặt true thì zip để backup trước khi xóa
                     maxSize: '2m',
-                    maxFiles: '30d', //xóa file log cũ sau 14 ngày
+                    maxFiles: '2d', //xóa file log cũ sau 2 ngày
                     format: winston.format.combine(
                         timestamp({
                             format: 'YYYY-MM-DD HH:mm:ss.SSS A'

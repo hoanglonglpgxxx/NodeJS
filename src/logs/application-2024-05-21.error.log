@@ -9,3 +9,92 @@
 2024-05-21 17:09:48.395 PM - [error] - undefined - undefined - 404 - Can't find /api/v1/users/login on this server - 
 2024-05-21 17:11:44.794 PM - [error] - undefined - undefined - 400 - webhookController.sendToDiscord is not a function - 
 2024-05-21 17:13:18.603 PM - [error] - undefined - undefined - 404 - Can't find /api/v1/users/login on this server - 
+2024-05-21 17:22:39.770 PM - [error] - undefined - undefined - 401 - Incorrect email or password - 
+2024-05-21 17:22:46.123 PM - [error] - undefined - undefined - 401 - Incorrect email or password - 
+2024-05-21 17:22:47.117 PM - [error] - undefined - undefined - 401 - Incorrect email or password - 
+2024-05-21 17:22:47.939 PM - [error] - undefined - undefined - 401 - Incorrect email or password - 
+2024-05-21 17:22:48.753 PM - [error] - undefined - undefined - 401 - Incorrect email or password - 
+2024-05-21 17:22:49.687 PM - [error] - undefined - undefined - 401 - Incorrect email or password - 
+2024-05-21 17:22:50.437 PM - [error] - undefined - undefined - 401 - Incorrect email or password - 
+2024-05-21 17:22:51.334 PM - [error] - undefined - undefined - 401 - Incorrect email or password - 
+2024-05-21 17:22:52.285 PM - [error] - undefined - undefined - 401 - Incorrect email or password - 
+2024-05-21 17:22:53.070 PM - [error] - undefined - undefined - 401 - Incorrect email or password - 
+2024-05-21 17:23:05.187 PM - [error] - undefined - undefined - 401 - Incorrect email or password - 
+2024-05-21 17:23:06.077 PM - [error] - undefined - undefined - 401 - Incorrect email or password - 
+2024-05-21 17:23:06.881 PM - [error] - undefined - undefined - 401 - Incorrect email or password - 
+2024-05-21 17:23:07.484 PM - [error] - undefined - undefined - 401 - Incorrect email or password - 
+2024-05-21 17:23:08.351 PM - [error] - undefined - undefined - 401 - Incorrect email or password - 
+2024-05-21 17:23:08.969 PM - [error] - undefined - undefined - 401 - Incorrect email or password - 
+2024-05-21 17:23:09.795 PM - [error] - undefined - undefined - 401 - Incorrect email or password - 
+2024-05-21 17:23:10.612 PM - [error] - undefined - undefined - 401 - Incorrect email or password - 
+2024-05-21 17:23:11.347 PM - [error] - undefined - undefined - 401 - Incorrect email or password - 
+2024-05-21 17:23:12.344 PM - [error] - undefined - undefined - 401 - Incorrect email or password - 
+2024-05-21 17:23:51.214 PM - [error] - undefined - undefined - 401 - Incorrect email or password - 
+2024-05-21 17:23:52.109 PM - [error] - undefined - undefined - 401 - Incorrect email or password - 
+2024-05-21 17:23:52.938 PM - [error] - undefined - undefined - 401 - Incorrect email or password - 
+2024-05-21 17:23:53.781 PM - [error] - undefined - undefined - 401 - Incorrect email or password - 
+2024-05-21 17:23:54.670 PM - [error] - undefined - undefined - 401 - Incorrect email or password - 
+2024-05-21 17:23:55.255 PM - [error] - undefined - undefined - 401 - Incorrect email or password - 
+2024-05-21 17:23:56.073 PM - [error] - undefined - undefined - 401 - Incorrect email or password - 
+2024-05-21 17:23:56.950 PM - [error] - undefined - undefined - 401 - Incorrect email or password - 
+2024-05-21 17:23:57.851 PM - [error] - undefined - undefined - 401 - Incorrect email or password - 
+2024-05-21 17:25:17.425 PM - [error] - undefined - undefined - 401 - Incorrect email or password - 
+2024-05-21 17:25:18.316 PM - [error] - undefined - undefined - 401 - Incorrect email or password - 
+2024-05-21 17:25:19.111 PM - [error] - undefined - undefined - 401 - Incorrect email or password - 
+2024-05-21 17:25:20.056 PM - [error] - undefined - undefined - 401 - Incorrect email or password - 
+2024-05-21 17:25:20.626 PM - [error] - undefined - undefined - 401 - Incorrect email or password - 
+2024-05-21 17:25:21.720 PM - [error] - undefined - undefined - 401 - Incorrect email or password - 
+2024-05-21 17:25:22.708 PM - [error] - undefined - undefined - 401 - Incorrect email or password - 
+2024-05-21 17:25:23.759 PM - [error] - undefined - undefined - 401 - Incorrect email or password - 
+2024-05-21 17:26:52.641 PM - [error] - undefined - undefined - 401 - Incorrect email or password - 
+2024-05-21 17:26:53.602 PM - [error] - undefined - undefined - 401 - Incorrect email or password - 
+2024-05-21 17:26:54.543 PM - [error] - undefined - undefined - 401 - Incorrect email or password - 
+2024-05-21 17:26:55.326 PM - [error] - undefined - undefined - 401 - Incorrect email or password - 
+2024-05-21 17:26:56.290 PM - [error] - undefined - undefined - 401 - Incorrect email or password - 
+2024-05-21 17:26:57.236 PM - [error] - undefined - undefined - 401 - Incorrect email or password - 
+2024-05-21 17:26:58.101 PM - [error] - undefined - undefined - 401 - Incorrect email or password - 
+2024-05-21 17:26:58.938 PM - [error] - undefined - undefined - 401 - Incorrect email or password - 
+2024-05-21 17:26:59.927 PM - [error] - undefined - undefined - 401 - Incorrect email or password - 
+2024-05-21 17:27:41.157 PM - [error] - undefined - undefined - 401 - Incorrect email or password - 
+2024-05-21 17:32:19.140 PM - [error] - undefined - undefined - 400 - Cannot read properties of null (reading 'correctPassword') - 
+2024-05-21 17:33:00.197 PM - [error] - undefined - undefined - 400 - Cannot read properties of null (reading 'correctPassword') - 
+2024-05-21 17:33:58.982 PM - [error] - undefined - undefined - 400 - Cannot read properties of null (reading 'correctPassword') - 
+2024-05-21 17:34:51.566 PM - [error] - undefined - undefined - 400 - Cannot read properties of null (reading 'correctPassword') - 
+2024-05-21 17:34:58.989 PM - [error] - undefined - undefined - 401 - Incorrect email or password - 
+2024-05-21 17:35:12.063 PM - [error] - undefined - undefined - 401 - Incorrect email or password - 
+2024-05-21 17:35:23.686 PM - [error] - undefined - undefined - 401 - Incorrect email or password - 
+2024-05-21 17:35:26.303 PM - [error] - undefined - undefined - 401 - Incorrect email or password - 
+2024-05-21 17:36:11.371 PM - [error] - undefined - undefined - 401 - Incorrect email or password - 
+2024-05-21 17:36:12.766 PM - [error] - undefined - undefined - 401 - Incorrect email or password - 
+2024-05-21 17:36:14.134 PM - [error] - undefined - undefined - 401 - Incorrect email or password - 
+2024-05-21 17:36:16.199 PM - [error] - undefined - undefined - 401 - Incorrect email or password - 
+2024-05-21 17:36:17.385 PM - [error] - undefined - undefined - 401 - Incorrect email or password - 
+2024-05-21 17:36:18.661 PM - [error] - undefined - undefined - 401 - Incorrect email or password - 
+2024-05-21 17:36:19.885 PM - [error] - undefined - undefined - 401 - Incorrect email or password - 
+2024-05-21 17:36:21.453 PM - [error] - undefined - undefined - 401 - Incorrect email or password - 
+2024-05-21 17:36:22.330 PM - [error] - undefined - undefined - 401 - Incorrect email or password - 
+2024-05-21 17:36:45.133 PM - [error] - undefined - undefined - 401 - Incorrect email or password - 
+2024-05-21 17:36:46.487 PM - [error] - undefined - undefined - 401 - Incorrect email or password - 
+2024-05-21 17:36:47.930 PM - [error] - undefined - undefined - 401 - Incorrect email or password - 
+2024-05-21 17:36:49.273 PM - [error] - undefined - undefined - 401 - Incorrect email or password - 
+2024-05-21 17:36:50.715 PM - [error] - undefined - undefined - 401 - Incorrect email or password - 
+2024-05-21 17:36:52.070 PM - [error] - undefined - undefined - 401 - Incorrect email or password - 
+2024-05-21 17:36:53.496 PM - [error] - undefined - undefined - 401 - Incorrect email or password - 
+2024-05-21 17:37:13.278 PM - [error] - undefined - undefined - 400 - User validation failed: confirmPassword: Please provide confirm password - 
+2024-05-21 17:37:14.866 PM - [error] - undefined - undefined - 400 - User validation failed: confirmPassword: Please provide confirm password - 
+2024-05-21 17:37:16.445 PM - [error] - undefined - undefined - 400 - User validation failed: confirmPassword: Please provide confirm password - 
+2024-05-21 17:37:18.529 PM - [error] - undefined - undefined - 400 - User validation failed: confirmPassword: Please provide confirm password - 
+2024-05-21 17:37:20.443 PM - [error] - undefined - undefined - 400 - User validation failed: confirmPassword: Please provide confirm password - 
+2024-05-21 17:37:21.772 PM - [error] - undefined - undefined - 400 - User validation failed: confirmPassword: Please provide confirm password - 
+2024-05-21 17:37:53.749 PM - [error] - undefined - undefined - 400 - User validation failed: confirmPassword: Please provide confirm password - 
+2024-05-21 17:37:55.087 PM - [error] - undefined - undefined - 400 - User validation failed: confirmPassword: Please provide confirm password - 
+2024-05-21 17:37:56.587 PM - [error] - undefined - undefined - 400 - User validation failed: confirmPassword: Please provide confirm password - 
+2024-05-21 17:37:58.243 PM - [error] - undefined - undefined - 400 - User validation failed: confirmPassword: Please provide confirm password - 
+2024-05-21 17:37:59.806 PM - [error] - undefined - undefined - 400 - User validation failed: confirmPassword: Please provide confirm password - 
+2024-05-21 17:38:26.624 PM - [error] - undefined - undefined - 400 - User validation failed: confirmPassword: Please provide confirm password - 
+2024-05-21 17:39:00.095 PM - [error] - undefined - undefined - 401 - Incorrect email or password - 
+2024-05-21 17:39:01.608 PM - [error] - undefined - undefined - 401 - Incorrect email or password - 
+2024-05-21 17:39:02.965 PM - [error] - undefined - undefined - 401 - Incorrect email or password - 
+2024-05-21 17:39:04.406 PM - [error] - undefined - undefined - 401 - Incorrect email or password - 
+2024-05-21 17:39:06.348 PM - [error] - undefined - undefined - 401 - Incorrect email or password - 
+2024-05-21 17:39:07.553 PM - [error] - undefined - undefined - 401 - Incorrect email or password - 

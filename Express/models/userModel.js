@@ -57,7 +57,8 @@ const userSchema = new mongoose.Schema({
         type: Boolean,
         default: true,
         select: false
-    }
+    },
+    loginAttempts: 0
 });
 
 userSchema.pre('save', async function (next) {
