@@ -1,11 +1,12 @@
 const https = require('https');
 
-exports.sendToDiscord = (req, res, next) => {
+exports.sendToDiscord = (req, res) => {
     const headers = JSON.parse(JSON.stringify(req.headers));
     delete headers.connection;
     delete headers['accept-encoding'];
     delete headers['postman-token'];
     delete headers.accept;
+
 
     const body = { ...req.body };
     if (Object.prototype.hasOwnProperty.call(body, 'password')) {
@@ -46,5 +47,4 @@ exports.sendToDiscord = (req, res, next) => {
     // Write data to request body
     reqToDiscord.write(postData);
     reqToDiscord.end();
-    next();
 };

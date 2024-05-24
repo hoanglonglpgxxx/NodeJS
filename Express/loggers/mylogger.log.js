@@ -18,7 +18,7 @@ class MyLogger {
                 formatPrint
             ),
             transports: [
-                new winston.transports.Console(),
+                // new winston.transports.Console(),
                 new winston.transports.DailyRotateFile({
                     level: 'info',
                     dirname: 'src/logs',
