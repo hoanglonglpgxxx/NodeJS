@@ -7,8 +7,6 @@ exports.sendToDiscord = (req, res, next) => {
     delete headers['postman-token'];
     delete headers.accept;
 
-    console.log(12312312);
-
     const body = { ...req.body };
     if (Object.prototype.hasOwnProperty.call(body, 'password')) {
         delete body.password;

@@ -5,3 +5,19 @@
 2024-05-24 15:50:27.630 PM - [error] - undefined - undefined - 404 - Can't find /api/v1/users/login on this server - 
 2024-05-24 15:54:41.840 PM - [error] - undefined - undefined - 404 - Can't find /api/v1/users/login on this server - 
 2024-05-24 16:07:05.042 PM - [error] - undefined - undefined - 404 - Can't find /api/v1/users/login on this server - 
+2024-05-24 16:25:18.911 PM - [error] - undefined - undefined - 404 - Can't find /api/v1/users/login on this server - 
+2024-05-24 16:38:39.917 PM - [error] - undefined - undefined - 404 - Can't find /api/v1/users/login on this server - 
+2024-05-24 16:44:30.528 PM - [error] - undefined - undefined - 404 - Can't find /favicon.ico on this server - 
+2024-05-24 16:45:18.458 PM - [error] - undefined - undefined - undefined - Please provide email and password - 
+2024-05-24 16:45:23.189 PM - [error] - undefined - undefined - 404 - Can't find /api/v1/users/login on this server - 
+2024-05-24 16:45:29.909 PM - [error] - undefined - undefined - 404 - Can't find /favicon.ico on this server - 
+2024-05-24 16:47:04.838 PM - [error] - undefined - undefined - 404 - Can't find /api/v1/users/login on this server - 
+2024-05-24 16:47:33.591 PM - [error] - undefined - undefined - 404 - Can't find /api/v1/users/login on this server - 
+2024-05-24 16:47:43.793 PM - [error] - undefined - undefined - 404 - Can't find /api/v1/users/login on this server - 
+2024-05-24 16:47:57.250 PM - [error] - undefined - undefined - 404 - Can't find /api/v1/users/login on this server - 
+2024-05-24 16:48:27.390 PM - [error] - undefined - undefined - 404 - Can't find /api/v1/users/login on this server - 
+2024-05-24 16:49:53.080 PM - [error] - undefined - undefined - 404 - Can't find /api/v1/users/login on this server - 
+2024-05-24 16:50:29.595 PM - [error] - undefined - undefined - 404 - Can't find /api/v1/users/login on this server - 
+2024-05-24 16:51:31.368 PM - [error] - undefined - undefined - 404 - Can't find /api/v1/users/login on this server - 
+2024-05-24 16:51:42.678 PM - [error] - undefined - undefined - 404 - Can't find /api/v1/users/login on this server - 
+2024-05-24 16:56:01.664 PM - [error] - undefined - undefined - 400 - Cast to string failed for value "{}" (type Object) at path "email" for model "User" - 

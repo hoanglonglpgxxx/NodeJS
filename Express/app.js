@@ -2,6 +2,9 @@ const express = require('express');
 const morgan = require('morgan');
 const path = require('path');
 const rateLimit = require('express-rate-limit');
+const helmet = require('helmet');
+const mongoSanitize = require('express-mongo-sanitize');
+const xss = require('xss-clean');
 
 const app = express();
 const AppError = require('./utils/appError');
@@ -10,12 +13,15 @@ const tourRouter = require('./routes/tourRoutes');
 const userRouter = require('./routes/userRoutes');
 
 //GLOBAL MIDDLEWARES
-//1. Get detail of request
+//1. Set security HTTP headers
+app.use(helmet());
+
+//2. Get detail of request
 if (process.env.NODE_ENV === 'development') {
     app.use(morgan('dev'));
 }
 
-//2.Count request from sender's IP, if too much -> block request
+//3.Limit request from same
 const limiter = rateLimit({
     max: 100,
     windowMs: 60 * 60 * 1000, //1 hour
@@ -23,13 +29,27 @@ const limiter = rateLimit({
 });
 
 app.use('/api', limiter);//apply for all APIs
-//3. Body parser, reading data from body into req.body
-app.use(express.json());
+//4. Body parser, reading data from body into req.body
+app.use(express.json({ limit: '10kb' }));
 
-//4. Serving static files
+//5. Data sanitization against NoSQL query injection, disable query injection in req.body, req.query, req.params
+app.use(mongoSanitize());
+
+//6. Data sanitization against XSS, clean any malicious HTML code
+app.use(xss());
+
+//7. Serving static files
 app.use(express.static(path.join(__dirname, 'public')));
 
-//3. Route
+//8. Test middleware
+app.use((req, res, next) => {
+    req.requestTime = new Date().toISOString();
+    // console.log(req.headers);
+
+    next();
+});
+
+//ROUTE
 // app.get('/api/v1/tours', getAllTours);
 // app.post('/api/v1/tours', createTour);
 
