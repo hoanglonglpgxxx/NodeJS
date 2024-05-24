@@ -1,6 +1,7 @@
 const express = require('express');
 const morgan = require('morgan');
 const path = require('path');
+const rateLimit = require('express-rate-limit');
 
 const app = express();
 const AppError = require('./utils/appError');
@@ -8,19 +9,25 @@ const globalErrorHandler = require('./controllers/errorController');
 const tourRouter = require('./routes/tourRoutes');
 const userRouter = require('./routes/userRoutes');
 
-//1. Middleware
+//GLOBAL MIDDLEWARES
+//1. Get detail of request
 if (process.env.NODE_ENV === 'development') {
-    app.use(morgan('dev'));//get detail of request
+    app.use(morgan('dev'));
 }
-app.use(express.json());//express.json là 1 middleware
-app.use(express.static(path.join(__dirname, 'public')));
 
-app.use((req, res, next) => {
-    req.requestTime = new Date().toISOString();
-    next();
+//2.Count request from sender's IP, if too much -> block request
+const limiter = rateLimit({
+    max: 100,
+    windowMs: 60 * 60 * 1000, //1 hour
+    message: 'Too many requests, please try again in an hour'
 });
 
+app.use('/api', limiter);//apply for all APIs
+//3. Body parser, reading data from body into req.body
+app.use(express.json());
 
+//4. Serving static files
+app.use(express.static(path.join(__dirname, 'public')));
 
 //3. Route
 // app.get('/api/v1/tours', getAllTours);
@@ -43,7 +50,5 @@ app.all('*', (req, res, next) => { //handling unhandled routes
 
 //GLOBAL ERROR HANDLING MIDDLEWARE, tự nhảy vào middleware này khi lỗi
 app.use(globalErrorHandler);
-
-
 
 module.exports = app;
