@@ -5,8 +5,12 @@ const rateLimit = require('express-rate-limit');
 const helmet = require('helmet');
 const mongoSanitize = require('express-mongo-sanitize');
 const xss = require('xss-clean');
+const hpp = require('hpp');
 
 const app = express();
+app.set('view engine', 'pug');
+app.set('views', path.join(__dirname, 'views'));
+
 const AppError = require('./utils/appError');
 const globalErrorHandler = require('./controllers/errorController');
 const tourRouter = require('./routes/tourRoutes');
@@ -38,10 +42,17 @@ app.use(mongoSanitize());
 //6. Data sanitization against XSS, clean any malicious HTML code
 app.use(xss());
 
-//7. Serving static files
+//8. Prevent parameter pollution, remove duplicate query string
+app.use(hpp({
+    whitelist: [
+        'duration', 'ratingsQuantity', 'ratingsAverage', 'maxSize', 'difficulty', 'price'
+    ]
+}));//get the last query string
+
+//9. Serving static files
 app.use(express.static(path.join(__dirname, 'public')));
 
-//8. Test middleware
+//Test middleware
 app.use((req, res, next) => {
     req.requestTime = new Date().toISOString();
     // console.log(req.headers);
@@ -58,6 +69,9 @@ app.use((req, res, next) => {
 app.patch('/api/v1/tours/:id', updateTour);
 
 app.delete('/api/v1/tours/:id', deleteTour); */
+app.get('/', (req, res) => {
+    res.status(200).render('base');
+});
 
 app.use('/api/v1/tours', tourRouter); //method : Mounting Router
 app.use('/api/v1/users', userRouter);
