@@ -16,8 +16,7 @@ class AppError extends Error {
         this.isOperational = true;
 
         //Log the error with winston
-        // MyLogger.logger.error(`${this.statusCode} - ${this.message}`);
-        console.log(18723512);
+        MyLogger.logger.error(`${this.statusCode} - ${this.message}`);
         Error.captureStackTrace(this, this.constructor);
     }
 }

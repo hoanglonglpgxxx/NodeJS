@@ -15,6 +15,7 @@ const AppError = require('./utils/appError');
 const globalErrorHandler = require('./controllers/errorController');
 const tourRouter = require('./routes/tourRoutes');
 const userRouter = require('./routes/userRoutes');
+const viewRouter = require('./routes/viewRoutes');
 
 //GLOBAL MIDDLEWARES
 //1. Set security HTTP headers
@@ -69,13 +70,9 @@ app.use((req, res, next) => {
 app.patch('/api/v1/tours/:id', updateTour);
 
 app.delete('/api/v1/tours/:id', deleteTour); */
-app.get('/', (req, res) => {
-    res.status(200).render('base', {
-        tour: 'The Forest Hiker',
-        user: 'Jonas'
-    });
-});
 
+
+app.use('/', viewRouter);
 app.use('/api/v1/tours', tourRouter); //method : Mounting Router
 app.use('/api/v1/users', userRouter);
 

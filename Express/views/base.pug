@@ -1,16 +1,19 @@
 doctype html
 html
     head 
-        title Mits | #{tour}
-        link(rel='stylesheet', href='css/style.css')
+        meta(name='viewport' content='width=device-width, initial-scale=1.0')
+        meta(charset='UTF-8' )
         link(rel='shortcut icon' type='image/png' href='img/favicon.png')
+        link(rel='stylesheet', href='css/style.css')
+        link(rel='stylesheet' href='https://fonts.googleapis.com/css?family=Lato:300,300i,700')
+        title Mitstours | #{title}
     body
-        div(class="test" style="background-color: #f4f4f4; padding: 20px; margin: 20px;")
-            h1 = tour.toUpperCase()
-            p Sample text
-            a(href="/") = user
+    // HEADER
+    include _header
+    
+    // CONTENT
+    block content
+        h1 This is a placeholder
 
-             - const x = 9;
-             h2 = 2*x
-        //- block content
-
+    // FOOTER
+    include _footer

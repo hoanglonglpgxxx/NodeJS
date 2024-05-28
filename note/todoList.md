@@ -7,5 +7,4 @@ DeprecationWarning: The URL mongodb://mitsngeither:Abc.2010%40@ac-w1rf4ag-shard-
 (Use `node --trace-deprecation ...` to show where the warning was created)
 //writelog vẫn chưa có hướng để run khi return new appError()
 
-- thực hành lại gitworkflow theo video trong workspace
 - add 2-factor authen
