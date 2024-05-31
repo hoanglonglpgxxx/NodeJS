@@ -92,7 +92,7 @@ if(this.isModified('ten_field')){//code}
 - global quick search vs code: %ssearch_val
   fix lỗi gitguardian
 
-folder 12 vid 12 NHẦM, VID 1 FOL 11
+folder 12 vid 12 NHẦM, VID 2 FOL 11
 
 - admin default pass: Abc.2010@
 - user default pass: 123456789
