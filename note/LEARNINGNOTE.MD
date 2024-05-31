@@ -92,7 +92,7 @@ if(this.isModified('ten_field')){//code}
 - global quick search vs code: %ssearch_val
   fix lỗi gitguardian
 
-folder 12 vid 12 NHẦM, VID 2 FOL 11
+folder 12 vid 12 NHẦM, VID 3 FOL 11
 
 - admin default pass: Abc.2010@
 - user default pass: 123456789
@@ -102,6 +102,6 @@ folder 12 vid 12 NHẦM, VID 2 FOL 11
 - cài nodemailer: npm i nodemailer,winston,jsonwebtoken
 
 I. types of rela between data
-a. 1:1 : 1 field have only 1 value
-b. 1: many : 1:few, 1:many, 1:ton
-c. many:many
+a. 1:1 : 1 field have only 1 value BEST TO USE: 1:FEW CHILD REFERENCING
+b. 1: many : 1:few, 1:many, 1:ton BEST TO USE: 1:MANY, 1:TON PARENT REFERENCING
+c. many:many 2way referencing
