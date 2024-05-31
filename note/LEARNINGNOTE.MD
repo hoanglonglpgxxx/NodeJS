@@ -92,7 +92,7 @@ if(this.isModified('ten_field')){//code}
 - global quick search vs code: %ssearch_val
   fix lỗi gitguardian
 
-folder 12 vid 12
+folder 12 vid 12 NHẦM, VID 1 FOL 11
 
 - admin default pass: Abc.2010@
 - user default pass: 123456789
@@ -101,6 +101,7 @@ folder 12 vid 12
 
 - cài nodemailer: npm i nodemailer,winston,jsonwebtoken
 
-- set value của 1 field là undefined thì trong DB sẽ tự remove field đó
-
-update current user password, update current user data(except password)
+I. types of rela between data
+a. 1:1 : 1 field have only 1 value
+b. 1: many : 1:few, 1:many, 1:ton
+c. many:many
