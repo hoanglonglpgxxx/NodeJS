@@ -80,7 +80,7 @@ accountability: nhiệm vụ/trách nhiệm
 
 MOST POWERFUL PASSWORD IS THE LONGEST ONE
 
-//bắt event khi save và field nào đó bị modified
+\*\*\* bắt event khi save và field nào đó bị modified
 userSchema.pre('save', function (next) {
 if(this.isModified('ten_field')){//code}
 });
@@ -90,18 +90,15 @@ if(this.isModified('ten_field')){//code}
 - Khi query, select field không được show ở response (bị set select: false trong schema) , cần thêm + vào trước tên field
   ex: User.findOne({email: email}).select('+password');
 - global quick search vs code: %ssearch_val
-  fix lỗi gitguardian
-
-folder 12 vid 12 NHẦM, VID 3 FOL 11
 
 - admin default pass: Abc.2010@
 - user default pass: 123456789
 - guide default pass: 1234567890
-- lead-guide default pass: 123456789999
-
-- cài nodemailer: npm i nodemailer,winston,jsonwebtoken
+- lead-guide default pass: 12345678999
 
 I. types of rela between data
-a. 1:1 : 1 field have only 1 value BEST TO USE: 1:FEW CHILD REFERENCING
-b. 1: many : 1:few, 1:many, 1:ton BEST TO USE: 1:MANY, 1:TON PARENT REFERENCING
-c. many:many 2way referencing
+a. 1:1 : 1 field have only 1 value BEST TO USE: 1:FEW CHILD -> REFERENCING/EMBEDDING
+b. 1: many : 1:few, 1:many, 1:ton BEST TO USE: 1:MANY, 1:TON -> PARENT REFERENCING
+c. many:many -> 2way referencing
+
+folder 12 vid 12 NHẦM, VID 7 FOL 11
