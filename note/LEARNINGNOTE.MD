@@ -101,10 +101,12 @@ a. 1:1 : 1 field have only 1 value BEST TO USE: 1:FEW CHILD -> REFERENCING/EMBED
 b. 1: many : 1:few, 1:many, 1:ton BEST TO USE: 1:MANY, 1:TON -> PARENT REFERENCING
 c. many:many -> 2way referencing
 
-- Tour.findById(req.params.id).populate('ten_field') : populate() fillup dữ liệu của field được truyền vào theo reference -VẪN TẠO 1 QUERY- ẢNH HƯỞNG PERFORMANCE
+- Tour.findById(req.params.id).populate('ten_field') : populate() fillup dữ liệu của field được truyền vào theo reference -VẪN là trong 1 QUERY- ẢNH HƯỞNG PERFORMANCE
   => hoặc theo dạn .populate({
   path: 'ten_field',
   select: '-ten_field_muon_an'
   });
+
+- toJSON virtuals, toObject virtuals ???
 
 folder 12 vid 12 NHẦM, VID 7 FOL 11

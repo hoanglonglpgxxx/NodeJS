@@ -8,3 +8,8 @@ DeprecationWarning: The URL mongodb://mitsngeither:Abc.2010%40@ac-w1rf4ag-shard-
 //writelog vẫn chưa có hướng để run khi return new appError()
 
 - add 2-factor authen
+
+READ BOOK PAGE
+
+- TABLE HAS NAME, LINK TO IMAGE OF BOOK, RATING STARS, DESCRIPTION OF REVIEW CONTENT, TYPE(EBOOK, BOOK, PDF,...), NUMBER, CREATED TIME, END TIME(END TIME WILL BE DISABLE, ONLY CHANGE AS LAST UPDATE TIME, can set to unchangable state)
+- import/export json - excel

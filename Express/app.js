@@ -16,6 +16,7 @@ const globalErrorHandler = require('./controllers/errorController');
 const tourRouter = require('./routes/tourRoutes');
 const userRouter = require('./routes/userRoutes');
 const viewRouter = require('./routes/viewRoutes');
+const reviewRouter = require('./routes/reviewRoutes');
 
 //GLOBAL MIDDLEWARES
 //1. Set security HTTP headers
@@ -75,6 +76,7 @@ app.delete('/api/v1/tours/:id', deleteTour); */
 app.use('/', viewRouter);
 app.use('/api/v1/tours', tourRouter); //method : Mounting Router
 app.use('/api/v1/users', userRouter);
+app.use('/api/v1/reviews', reviewRouter);
 
 
 //run for all HTTP METHODS
