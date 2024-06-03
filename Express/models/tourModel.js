@@ -149,7 +149,7 @@ tourSchema.post('save', (doc, next) => {
 }); */
 
 //QUERY MIDDLEWARE in mongoose
-//run before/after certain query executed
+//Run before/after certain query executed
 tourSchema.pre(/^find/, function (next) {
     //this points to current query
     this.find({ secretTour: { $ne: true } });
@@ -157,6 +157,8 @@ tourSchema.pre(/^find/, function (next) {
     this.start = Date.now();
     next();
 });
+
+//Populate guides field in tourSchema
 tourSchema.pre(/^find/, function (next) {
     this.populate({
         path: 'guides',
@@ -165,6 +167,8 @@ tourSchema.pre(/^find/, function (next) {
 
     next();
 });
+
+//Run after query executed
 tourSchema.post(/^find/, function (docs, next) {
     console.log(`Query took ${Date.now() - this.start} ms!`);
     // console.log(docs);
