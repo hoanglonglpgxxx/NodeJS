@@ -109,4 +109,4 @@ c. many:many -> 2way referencing
 
 - toJSON virtuals, toObject virtuals ???
 
-folder 12 vid 12 NHẦM, VID 7 FOL 11
+folder 12 vid 12 NHẦM, VID 9 FOL 11
