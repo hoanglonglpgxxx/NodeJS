@@ -108,7 +108,7 @@ const tourSchema = new mongoose.Schema({
             type: mongoose.Schema.ObjectId,
             ref: 'User'
         }
-    ]
+    ],
 }, {
     toJSON: {
         virtuals: TransformStreamDefaultController
@@ -121,6 +121,13 @@ const tourSchema = new mongoose.Schema({
 tourSchema.virtual('durationWeeks').get(function () {
     return this.duration / 7;
 });// getter
+
+//Virtual populate
+tourSchema.virtual('reviews', {
+    ref: 'Review',
+    foreignField: 'tour', //field in Review model
+    localField: '_id' //field in Tour model
+});
 
 //DOCUMENT MIDDLEWARE in mongoose, ONLY runs before .save() & .create()
 //xử lý trước khi data được save vào db

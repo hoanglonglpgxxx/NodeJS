@@ -104,7 +104,7 @@ c. many:many -> 2way referencing
 - Tour.findById(req.params.id).populate('ten_field') : populate() fillup dữ liệu của field được truyền vào theo reference -VẪN là trong 1 QUERY- ẢNH HƯỞNG PERFORMANCE
   => hoặc theo dạn .populate({
   path: 'ten_field',
-  select: '-ten_field_muon_an'
+  select: '-ten_field_muon_an ten_field_muon_hien' ex: '-\_\_v name'
   });
 
 - toJSON virtuals, toObject virtuals ???

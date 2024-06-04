@@ -1,0 +1,6 @@
+2024-06-04 10:06:40.726 AM - [error] - undefined - undefined - 400 - Cannot do exclusion on field createdAt in inclusion projection - 
+2024-06-04 10:22:53.052 AM - [error] - undefined - undefined - 401 - Require login to access - 
+2024-06-04 10:23:08.780 AM - [error] - undefined - undefined - 401 - Require login to access - 
+2024-06-04 10:23:10.941 AM - [error] - undefined - undefined - 401 - Require login to access - 
+2024-06-04 10:28:02.882 AM - [error] - undefined - undefined - 400 - Tour.findById(...).popuplate is not a function - 
+2024-06-04 10:35:20.858 AM - [error] - undefined - undefined - 404 - Can't find /api/v1/reviews/665d98be11bf000f003b4d5d on this server - 
