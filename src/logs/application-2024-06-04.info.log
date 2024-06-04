@@ -17,3 +17,5 @@
 2024-06-04 14:58:21.769 PM - [error] - undefined - undefined - undefined - Please provide email and password - 
 2024-06-04 15:00:47.010 PM - [error] - undefined - undefined - 401 - Require login to access - 
 2024-06-04 15:00:55.308 PM - [error] - undefined - undefined - 401 - Require login to access - 
+2024-06-04 15:41:00.917 PM - [error] - undefined - undefined - 403 - You do not have permission to perform this action - 
+2024-06-04 15:41:18.208 PM - [error] - undefined - undefined - 403 - You do not have permission to perform this action - 

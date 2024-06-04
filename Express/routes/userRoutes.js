@@ -16,8 +16,8 @@ router.delete('/delete-self', authController.protect, userController.deleteSelf)
 
 router
     .route('/')
-    .get(userController.getAllUsers)
-    .post(userController.createUser);
+    .get(userController.getAllUsers);
+// .post(userController.createUser);
 
 router
     .route('/:id')

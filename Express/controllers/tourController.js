@@ -70,58 +70,9 @@ exports.getTour = catchAsync(async (req, res, next) => {
 });
 
 
-exports.createTour = catchAsync(async (req, res, next) => {
-    /* TEST WITH STATIC JSON FILE
-    const newId = toursData[toursData.length - 1].id + 1;
-    const newTour = { id: newId, ...req.body };
+exports.createTour = factoryHandler.createOne(Tour);
 
-    toursData.push(newTour);
-    fs.writeFile(`${__dirname}/data/tours-simple.json`, JSON.stringify(toursData), err => {
-        res.status(201).json({
-            status: 'success',
-            data: {
-                tour: newTour
-            }
-        });
-    }); */
-
-
-    const newTour = await Tour.create(req.body);
-
-    res.status(201).json({
-        status: 'success',
-        data: {
-            tour: newTour
-        }
-    });
-});
-
-exports.updateTour = catchAsync(async (req, res, next) => {
-    const tour = await Tour.findByIdAndUpdate(req.params.id, req.body, {
-        new: true,
-        runValidators: true
-    });
-
-    res.status(200).json({
-        status: 'success',
-        data: {
-            tour: tour
-        }
-    });
-});
-
-/* exports.deleteTour = catchAsync(async (req, res, next) => {
-    const tour = await Tour.findByIdAndDelete(req.params.id);
-
-    if (!tour) {
-        return next(new AppError(`No tour founded with ID ${req.params.id}`, 404));
-    }
-
-    res.status(204).json({
-        status: 'success',
-        data: null
-    });
-}); */
+exports.updateTour = factoryHandler.updateOne(Tour);
 
 exports.deleteTour = factoryHandler.deleteOne(Tour);
 
