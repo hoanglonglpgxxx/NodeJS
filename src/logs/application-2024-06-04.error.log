@@ -23,3 +23,5 @@
 2024-06-04 16:10:45.059 PM - [error] - undefined - undefined - 400 - tours is not defined - 
 2024-06-04 16:11:21.354 PM - [error] - undefined - undefined - 400 - tours is not defined - 
 2024-06-04 16:11:46.163 PM - [error] - undefined - undefined - 400 - tours is not defined - 
+2024-06-04 16:55:26.535 PM - [error] - undefined - undefined - 400 - Cast to ObjectId failed for value "me" (type string) at path "_id" for model "User" - 
+2024-06-04 17:05:22.027 PM - [error] - undefined - undefined - 400 - Cast to ObjectId failed for value "me" (type string) at path "_id" for model "User" - 
