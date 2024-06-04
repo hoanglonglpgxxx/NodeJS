@@ -4,3 +4,10 @@
 2024-06-04 10:23:10.941 AM - [error] - undefined - undefined - 401 - Require login to access - 
 2024-06-04 10:28:02.882 AM - [error] - undefined - undefined - 400 - Tour.findById(...).popuplate is not a function - 
 2024-06-04 10:35:20.858 AM - [error] - undefined - undefined - 404 - Can't find /api/v1/reviews/665d98be11bf000f003b4d5d on this server - 
+2024-06-04 10:58:07.291 AM - [error] - undefined - undefined - 404 - Can't find /api/v1/tors/665942e6ccbefd521cdc737d/reviews on this server - 
+2024-06-04 10:58:18.507 AM - [error] - undefined - undefined - 404 - Can't find /api/v1/tours/665942e6ccbefd521cdc737d/reviews on this server - 
+2024-06-04 10:59:35.421 AM - [error] - undefined - undefined - 404 - Can't find /api/v1/tours/665942e6ccbefd521cdc737d/reviews on this server - 
+2024-06-04 11:03:03.858 AM - [error] - undefined - undefined - 404 - Can't find /api/v1/tours/665942e6ccbefd521cdc737d/reviews on this server - 
+2024-06-04 11:03:05.282 AM - [error] - undefined - undefined - 404 - Can't find /api/v1/tours/665942e6ccbefd521cdc737d/reviews on this server - 
+2024-06-04 11:03:47.731 AM - [error] - undefined - undefined - 404 - Can't find /api/v1/tours/665942e6ccbefd521cdc737d/reviews on this server - 
+2024-06-04 11:04:05.624 AM - [error] - undefined - undefined - 404 - Can't find /api/v1/tours/665942e6ccbefd521cdc737d/reviews on this server - 
