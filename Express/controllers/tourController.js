@@ -1,8 +1,6 @@
 const Tour = require('../models/tourModel');
 //BUILD QUERY
 const catchAsync = require('../utils/catchAsync');
-const APIFeatures = require('../utils/apiFeatures');
-const AppError = require('../utils/appError');
 const factoryHandler = require('./factoryHandler');
 
 //const toursData = JSON.parse(fs.readFileSync(`${__dirname}/../data/tours-simple.json`)); FOR TESTING PURPOSE
@@ -36,39 +34,9 @@ exports.aliasTopTours = (req, res, next) => {
     next();
 };
 
-exports.getAllTours = catchAsync(async (req, res, next) => {
-    //EXECUTE QUERY
-    const features = new APIFeatures(Tour.find(), req.query)
-        .filter()
-        .sort()
-        .limit()
-        .paginate();
-    const tours = await features.query;
+exports.getAllTours = factoryHandler.getAll(Tour);
 
-    res.status(200).json({
-        status: 'success',
-        results: tours.length,
-        data: {
-            tours: tours
-        }
-    });
-});
-
-exports.getTour = catchAsync(async (req, res, next) => {
-    const tour = await Tour.findById(req.params.id).populate('reviews');
-
-    if (!tour) {
-        return next(new AppError(`No tour founded with ID ${req.params.id}`, 404));
-    }
-    //có thể thay bằng query này : Tour.findOne({_id: req.params.id})
-    res.status(200).json({
-        status: 'success',
-        data: {
-            tour
-        }
-    });
-});
-
+exports.getTour = factoryHandler.getOne(Tour, { path: 'reviews' });
 
 exports.createTour = factoryHandler.createOne(Tour);
 

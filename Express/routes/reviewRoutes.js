@@ -14,7 +14,9 @@ router
         reviewController.setTourUserIds,
         reviewController.createReview);
 
-router.route('/:id').delete(authController.protect, authController.restrictRole('user', 'admin'), reviewController.deleteReview);
-router.route('/:id').patch(authController.protect, authController.restrictRole('user', 'admin'), reviewController.updateReview);
+router.route('/:id')
+    .get(reviewController.getReview)
+    .patch(authController.protect, authController.restrictRole('user', 'admin'), reviewController.updateReview)
+    .delete(authController.protect, authController.restrictRole('user', 'admin'), reviewController.deleteReview);
 
 module.exports = router;
