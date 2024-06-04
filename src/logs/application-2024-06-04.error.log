@@ -11,3 +11,9 @@
 2024-06-04 11:03:05.282 AM - [error] - undefined - undefined - 404 - Can't find /api/v1/tours/665942e6ccbefd521cdc737d/reviews on this server - 
 2024-06-04 11:03:47.731 AM - [error] - undefined - undefined - 404 - Can't find /api/v1/tours/665942e6ccbefd521cdc737d/reviews on this server - 
 2024-06-04 11:04:05.624 AM - [error] - undefined - undefined - 404 - Can't find /api/v1/tours/665942e6ccbefd521cdc737d/reviews on this server - 
+2024-06-04 14:57:51.510 PM - [error] - undefined - undefined - 403 - You do not have permission to perform this action - 
+2024-06-04 14:58:10.287 PM - [error] - undefined - undefined - 400 - Cast to string failed for value "{}" (type Object) at path "email" for model "User" - 
+2024-06-04 14:58:21.741 PM - [error] - undefined - undefined - undefined - Please provide email and password - 
+2024-06-04 14:58:21.770 PM - [error] - undefined - undefined - undefined - Please provide email and password - 
+2024-06-04 15:00:47.011 PM - [error] - undefined - undefined - 401 - Require login to access - 
+2024-06-04 15:00:55.308 PM - [error] - undefined - undefined - 401 - Require login to access - 

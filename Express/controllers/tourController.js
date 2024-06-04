@@ -3,7 +3,7 @@ const Tour = require('../models/tourModel');
 const catchAsync = require('../utils/catchAsync');
 const APIFeatures = require('../utils/apiFeatures');
 const AppError = require('../utils/appError');
-
+const factoryHandler = require('./factoryHandler');
 
 //const toursData = JSON.parse(fs.readFileSync(`${__dirname}/../data/tours-simple.json`)); FOR TESTING PURPOSE
 
@@ -110,7 +110,7 @@ exports.updateTour = catchAsync(async (req, res, next) => {
     });
 });
 
-exports.deleteTour = catchAsync(async (req, res, next) => {
+/* exports.deleteTour = catchAsync(async (req, res, next) => {
     const tour = await Tour.findByIdAndDelete(req.params.id);
 
     if (!tour) {
@@ -121,7 +121,9 @@ exports.deleteTour = catchAsync(async (req, res, next) => {
         status: 'success',
         data: null
     });
-});
+}); */
+
+exports.deleteTour = factoryHandler.deleteOne(Tour);
 
 exports.getToursStats = catchAsync(async (req, res, next) => {
     const stats = await Tour.aggregate([

@@ -14,7 +14,7 @@ router.route('/top-5-cheap').get(tourController.aliasTopTours, tourController.ge
 router
     .route('/')
     .get(authController.protect, tourController.getAllTours)
-    .post(tourController.createTour);
+    .post(authController.protect, authController.restrictRole('admin'), tourController.createTour);
 
 router
     .route('/tour-stats')

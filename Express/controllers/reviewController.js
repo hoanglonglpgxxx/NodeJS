@@ -1,11 +1,14 @@
 const Review = require('../models/reviewModel');
 //BUILD QUERY
 const catchAsync = require('../utils/catchAsync');
-const APIFeatures = require('../utils/apiFeatures');
+const factoryHandler = require('./factoryHandler');
 
 exports.getAllReviews = catchAsync(async (req, res, next) => {
-    const features = new APIFeatures(Review.find(), req.query);
-    const reviews = await features.query;
+    //Allow nested routes
+    let filter = {};
+    if (req.params.tourId) filter = { tour: req.params.tourId };
+
+    const reviews = await Review.find(filter);
 
     res.status(200).json({
         status: 'success',
@@ -30,3 +33,6 @@ exports.createReview = catchAsync(async (req, res, next) => {
         }
     });
 });
+
+//factory function
+exports.deleteReview = factoryHandler.deleteOne(Review);
