@@ -63,16 +63,6 @@ app.use((req, res, next) => {
 });
 
 //ROUTE
-// app.get('/api/v1/tours', getAllTours);
-// app.post('/api/v1/tours', createTour);
-
-/* app.get('/api/v1/tours/:id/:x?', getTour);
-
-app.patch('/api/v1/tours/:id', updateTour);
-
-app.delete('/api/v1/tours/:id', deleteTour); */
-
-
 app.use('/', viewRouter);
 app.use('/api/v1/tours', tourRouter); //method : Mounting Router
 app.use('/api/v1/users', userRouter);

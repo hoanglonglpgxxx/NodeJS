@@ -1,6 +1,0 @@
-2024-06-03 10:34:04.858 AM - [error] - undefined - undefined - 400 - Tour validation failed: name: Tour must have a name - 
-2024-06-03 16:47:12.075 PM - [error] - undefined - undefined - 404 - Can't find /api/v1/reviews on this server - 
-2024-06-03 16:47:42.405 PM - [error] - undefined - undefined - 404 - Can't find /api/v1/reviews on this server - 
-2024-06-03 16:51:11.283 PM - [error] - undefined - undefined - 404 - Can't find /api/v1/reviews on this server - 
-2024-06-03 17:13:56.948 PM - [error] - undefined - undefined - 401 - Incorrect email or password - 
-2024-06-03 17:16:43.890 PM - [error] - undefined - undefined - 400 - Review validation failed: review: Review cannot be empty - 

@@ -5,18 +5,23 @@ const authController = require('../controllers/authController');
 
 const router = express.Router({ mergeParams: true }); //allow nested routes
 
+router.user(authController.protect);
+
 router
     .route('/')
     .get(reviewController.getAllReviews)
     .post(
-        authController.protect,
         authController.restrictRole('user'),
         reviewController.setTourUserIds,
         reviewController.createReview);
 
 router.route('/:id')
     .get(reviewController.getReview)
-    .patch(authController.protect, authController.restrictRole('user', 'admin'), reviewController.updateReview)
-    .delete(authController.protect, authController.restrictRole('user', 'admin'), reviewController.deleteReview);
+    .patch(
+        authController.restrictRole('user', 'admin'),
+        reviewController.updateReview)
+    .delete(
+        authController.restrictRole('user', 'admin'),
+        reviewController.deleteReview);
 
 module.exports = router;

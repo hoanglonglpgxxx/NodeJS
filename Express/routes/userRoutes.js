@@ -7,14 +7,20 @@ const router = express.Router();
 
 router.post('/signup', authController.signup);
 router.post('/login', authController.login);
+
 router.post('/forgot-password', authController.forgotPassword);
 router.patch('/reset-password/:token', authController.resetPassword);
 
-router.patch('/update-password', authController.protect, authController.updatePassword);
-router.patch('/update-data', authController.protect, userController.updateData);
-router.delete('/delete-self', authController.protect, userController.deleteSelf);
-router.get('/me', authController.protect, userController.getMe, userController.getUser);
+router.use(authController.protect);//do middleware có tính tuần tự, nên phải đặt protect ở đây thì các route dưới được bảo vệ
+
+router.patch('/update-password', authController.updatePassword);
+router.patch('/update-data', userController.updateData);
+
+router.delete('/delete-self', userController.deleteSelf);
+router.get('/me', userController.getMe, userController.getUser);
 //thiếu updateMe
+
+router.use(authController.restrictRole('admin'));
 
 router
     .route('/')

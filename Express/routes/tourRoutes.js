@@ -3,7 +3,7 @@ const tourController = require('../controllers/tourController');
 const authController = require('../controllers/authController');
 const reviewRouter = require('./reviewRoutes');
 
-const router = express.Router(); // là 1 middleware
+const router = express.Router();
 
 // router.param('id', tourController.checkID);
 
@@ -13,8 +13,10 @@ router.route('/top-5-cheap').get(tourController.aliasTopTours, tourController.ge
 
 router
     .route('/')
-    .get(authController.protect, tourController.getAllTours)
-    .post(authController.protect, authController.restrictRole('admin'), tourController.createTour);
+    .get(tourController.getAllTours)
+    .post(authController.protect,
+        authController.restrictRole('lead-guide', 'admin'),
+        tourController.createTour);
 
 router
     .route('/tour-stats')
@@ -22,12 +24,18 @@ router
 
 router
     .route('/monthly-plan/:year')
-    .get(tourController.getMonthlyPlan);
+    .get(authController.protect,
+        authController.restrictRole('lead-guide', 'admin', 'guide'),
+        tourController.getMonthlyPlan);
 
 router
     .route('/:id')
     .get(tourController.getTour)
-    .patch(tourController.updateTour)
-    .delete(authController.protect, authController.restrictRole('admin', 'lead-guide'), tourController.deleteTour);
+    .patch(authController.protect,
+        authController.restrictRole('lead-guide', 'admin'),
+        tourController.updateTour)
+    .delete(authController.protect,
+        authController.restrictRole('lead-guide', 'admin'),
+        tourController.deleteTour);
 
 module.exports = router;
