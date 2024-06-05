@@ -5,7 +5,7 @@ const authController = require('../controllers/authController');
 
 const router = express.Router({ mergeParams: true }); //allow nested routes
 
-router.user(authController.protect);
+router.use(authController.protect);
 
 router
     .route('/')

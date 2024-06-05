@@ -7,7 +7,7 @@ const { combine, timestamp } = winston.format;
 class MyLogger {
     constructor() {
         const formatPrint = winston.format.printf(
-            ({ level, message, context, requestId, timestamp, metadata }) => `${timestamp} - [${level}] - ${context} - ${requestId} - ${message} - ${metadata ? JSON.stringify(metadata) : ''}`
+            ({ level, message, context, requestId, metadata }) => `${timestamp} - [${level}] - ${context} - ${requestId} - ${message} - ${metadata ? JSON.stringify(metadata) : ''}`
         );
 
         this.logger = winston.createLogger({
@@ -18,7 +18,7 @@ class MyLogger {
                 formatPrint
             ),
             transports: [
-                // new winston.transports.Console(),
+                new winston.transports.Console(),
                 new winston.transports.DailyRotateFile({
                     level: 'info',
                     dirname: 'src/logs',
@@ -26,7 +26,7 @@ class MyLogger {
                     datePattern: 'YYYY-MM-DD',
                     zippedArchive: true, //k đặt thì tệp log bị xóa luôn, đặt true thì zip để backup trước khi xóa
                     maxSize: '2m',
-                    maxFiles: '2d', //xóa file log cũ sau 2 ngày
+                    maxFiles: '7d', //xóa file log cũ sau 7 ngày
                     format: winston.format.combine(
                         timestamp({
                             format: 'YYYY-MM-DD HH:mm:ss.SSS A'
@@ -39,9 +39,9 @@ class MyLogger {
                     dirname: 'src/logs',
                     filename: 'application-%DATE%.error.log',
                     datePattern: 'YYYY-MM-DD',
-                    zippedArchive: true, //k đặt thì tệp log bị xóa luôn, đặt true thì zip để backup trước khi xóa
+                    zippedArchive: true,
                     maxSize: '2m',
-                    maxFiles: '2d', //xóa file log cũ sau 2 ngày
+                    maxFiles: '7d',
                     format: winston.format.combine(
                         timestamp({
                             format: 'YYYY-MM-DD HH:mm:ss.SSS A'
