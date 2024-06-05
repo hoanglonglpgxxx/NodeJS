@@ -11,7 +11,7 @@ router.post('/login', authController.login);
 router.post('/forgot-password', authController.forgotPassword);
 router.patch('/reset-password/:token', authController.resetPassword);
 
-router.use(authController.protect);//do middleware có tính tuần tự, nên phải đặt protect ở đây thì các route dưới được bảo vệ
+router.use(authController.protect);//do middleware có tính tuần tự, nên phải đặt protect ở đây thì các route dưới được protect
 
 router.patch('/update-password', authController.updatePassword);
 router.patch('/update-data', userController.updateData);

@@ -92,9 +92,7 @@ if(this.isModified('ten_field')){//code}
 - global quick search vs code: %ssearch_val
 
 - admin default pass: Abc.2010@
-- user default pass: 123456789
-- guide default pass: 1234567890
-- lead-guide default pass: 12345678999
+- all pass: test1234
 
 I. types of rela between data
 a. 1:1 : 1 field have only 1 value BEST TO USE: 1:FEW CHILD -> REFERENCING/EMBEDDING
