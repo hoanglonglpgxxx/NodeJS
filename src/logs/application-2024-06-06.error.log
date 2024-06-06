@@ -22,3 +22,9 @@ function createFormatWrap(opts) {
 function createFormatWrap(opts) {
     return new Format(opts);
   } - [error] - undefined - undefined - 400 - Cannot read properties of null (reading 'constructor') - 
+function createFormatWrap(opts) {
+    return new Format(opts);
+  } - [error] - undefined - undefined - 400 - E11000 duplicate key error collection: tours-test.reviews index: tour_1_user_1 dup key: { tour: ObjectId('6661369f8851882314a03370'), user: ObjectId('5c8a1dfa2f8fb814b56fa181') } - 
+function createFormatWrap(opts) {
+    return new Format(opts);
+  } - [error] - undefined - undefined - 400 - E11000 duplicate key error collection: tours-test.reviews index: tour_1_user_1 dup key: { tour: ObjectId('6661369f8851882314a03370'), user: ObjectId('5c8a1dfa2f8fb814b56fa181') } - 

@@ -64,6 +64,9 @@ reviewSchema.statics.calvAverageRating = async function (tourId) {
     }
 };
 
+reviewSchema.index({ tour: 1, user: 1 }, { unique: true }); //mỗi user chỉ được review 1 lần cho 1 tour
+//-> k biết sao lỗi không tạo được index, tạo tay trong mongocompass
+
 //khi có review mới thì update lại thông số trên tour
 reviewSchema.post('save', function () {
     // this points to current review
