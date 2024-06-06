@@ -51,15 +51,34 @@ reviewSchema.statics.calvAverageRating = async function (tourId) {
     ]);
 
     //update các thông số trên tour
-    await Tour.findByIdAndUpdate(tourId, {
-        ratingsQuantity: stats[0].nRating,
-        ratingsAverage: stats[0].avgRating
-    });
+    if (stats.length) {
+        await Tour.findByIdAndUpdate(tourId, {
+            ratingsQuantity: stats[0].nRating,
+            ratingsAverage: stats[0].avgRating
+        });
+    } else {
+        await Tour.findByIdAndUpdate(tourId, {
+            ratingsQuantity: 0,
+            ratingsAverage: 4.5
+        });
+    }
 };
 
+//khi có review mới thì update lại thông số trên tour
 reviewSchema.post('save', function () {
     // this points to current review
     this.constructor.calvAverageRating(this.tour);
+});
+
+//không dùng post() ở đây được vì không select được query để lấy findOne() 
+reviewSchema.pre(/^findOneAnd/, async function (next) {
+    this.review = await this.findOne(); //get current review and pass to post() by using this.review
+    next();
+});
+
+//sau khi set review thì có thể dùng post, lấy từ review đã set trong reviewSchema.pre()
+reviewSchema.post(/^findOneAnd/, async function () {
+    await this.review.constructor.calvAverageRating(this.review.tour._id);
 });
 
 reviewSchema.pre(/^find/, function (next) {

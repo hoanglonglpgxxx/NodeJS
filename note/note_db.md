@@ -48,5 +48,5 @@
 - có thể dùng như hàm getTitle ở chỗ làm(chỉ link bảng với id, từ id lấy ra title)
 - stage $group: tính average các document với field được truyền vào trong \_id của $group
 - can repeat stages, response sẽ là kết quả sau tất cả stages
-
-//IMPORT DEV DATA: node Express/data/import-dev-data --import
+  -post k có next(),pre có
+  //IMPORT DEV DATA: node Express/data/import-dev-data --import
