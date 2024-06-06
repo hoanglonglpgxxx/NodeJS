@@ -1,0 +1,9 @@
+function createFormatWrap(opts) {
+    return new Format(opts);
+  } - [error] - undefined - undefined - 401 - Incorrect email or password - 
+function createFormatWrap(opts) {
+    return new Format(opts);
+  } - [error] - undefined - undefined - 403 - You do not have permission to perform this action - 
+function createFormatWrap(opts) {
+    return new Format(opts);
+  } - [error] - undefined - undefined - 404 - No document founded with ID 666137d95d2a3b10a82ede9f - 
