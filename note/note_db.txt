@@ -50,3 +50,4 @@
 - can repeat stages, response sẽ là kết quả sau tất cả stages
   -post k có next(),pre có
   //IMPORT DEV DATA: node Express/data/import-dev-data --import
+-  $project in aggregate(): use to select, include, excude or rename fields, like SELECT in SQL
