@@ -19,3 +19,12 @@ function createFormatWrap(opts) {
 function createFormatWrap(opts) {
     return new Format(opts);
   } - [error] - undefined - undefined - 404 - Can't find /https://api.mapbox.com/mapbox-gl-js/v2.9.1/mapbox-gl.css on this server - 
+function createFormatWrap(opts) {
+    return new Format(opts);
+  } - [error] - undefined - undefined - 404 - Can't find /login on this server - 
+function createFormatWrap(opts) {
+    return new Format(opts);
+  } - [error] - undefined - undefined - 404 - Can't find /login on this server - 
+function createFormatWrap(opts) {
+    return new Format(opts);
+  } - [error] - undefined - undefined - 404 - Can't find /login on this server - 
