@@ -28,3 +28,9 @@ function createFormatWrap(opts) {
 function createFormatWrap(opts) {
     return new Format(opts);
   } - [error] - undefined - undefined - 404 - Can't find /login on this server - 
+function createFormatWrap(opts) {
+    return new Format(opts);
+  } - [error] - undefined - undefined - 404 - Can't find /login on this server - 
+function createFormatWrap(opts) {
+    return new Format(opts);
+  } - [error] - undefined - undefined - 404 - Can't find /login on this server - 
