@@ -32,7 +32,6 @@ body {
   font-weight: 300;
   font-family: 'Lato', sans-serif;
   color: #777;
-  padding: 3rem;
   min-height: 100vh;
   display: -webkit-box;
   display: -ms-flexbox;
@@ -609,7 +608,12 @@ body {
   scroll-snap-type: x mandatory;
 }
 .reviews::-webkit-scrollbar {
-  display: none;
+  background: transparent;
+  height: 3px;
+}
+.reviews::-webkit-scrollbar-thumb {
+  background: #383838;
+  border-radius: 10px;
 }
 .reviews__card {
   width: 30rem;
@@ -897,6 +901,7 @@ body {
   -ms-flex-pack: end;
   justify-content: flex-end;
 }
+
 .nav__el,
 .nav__el:link,
 .nav__el:visited {

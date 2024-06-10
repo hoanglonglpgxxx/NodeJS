@@ -1,15 +1,5 @@
 extends base
-
-mixin reviewCard(review)
-  .reviews__card
-    .reviews__avatar
-      img.reviews__avatar-img(src=`/img/users/${review.user.photo}`, alt=`${review.user.name}`)
-      h6.reviews__user= review.user.name
-    p.reviews__text= review.review
-    .reviews__rating
-      each star in [1, 2, 3, 4, 5]
-        svg.reviews__star(class=`reviews__star--${review.rating >= star ? 'active' : 'inactive'}`)
-          use(xlink:href='/img/icons.svg#icon-star')
+include _reviewCard
 
 mixin overviewBox(label, text, icon)
   .overview-box__detail 
@@ -18,6 +8,11 @@ mixin overviewBox(label, text, icon)
     span.overview-box__label= label
     span.overview-box__text= text
 
+block append head
+  script(src='/js/mapbox.js', defer)
+  script(src='https://api.mapbox.com/mapbox-gl-js/v2.9.1/mapbox-gl.js')
+  link(href='https://api.mapbox.com/mapbox-gl-js/v2.9.1/mapbox-gl.css', rel='stylesheet')  
+  
 block content
   section.section-header
     .header__hero
@@ -46,7 +41,7 @@ block content
           - const date = tour.startDates[0].toLocaleString('en-us', {month: 'long', year: 'numeric'})
           +overviewBox('Next date', date, 'calendar')
           +overviewBox('Difficulty', tour.difficulty, 'trending-up')
-          +overviewBox('Participants', `${tour.maxGroupSize} people`, 'user')
+          +overviewBox('Participants', `${tour.maxSize} people`, 'user')
           +overviewBox('Rating', `${tour.ratingsAverage} / 5`, 'star')
 
         .overview-box__group
@@ -73,16 +68,11 @@ block content
       .picture-box
         img.picture-box__img(src=`/img/tours/${img}`, alt=`The Park Camper Tour ${i + 1}`, class=`picture-box__img--${i + 1}`)
 
-  //- section.section-map
-  //-   #map(data-locations=`${JSON.stringify(tour.locations)}`)
+  section.section-map
+    #map(data-locations=`${JSON.stringify(tour.locations)}`)
 
-  //- section.section-reviews
-  //-   .reviews
-  //-     each review in tour.reviews
-  //-       +reviewCard(review)
-
-  section.section-reviews 
-    .reviews 
+  section.section-reviews
+    .reviews
       each review in tour.reviews
         +reviewCard(review)
 

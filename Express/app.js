@@ -20,7 +20,14 @@ const reviewRouter = require('./routes/reviewRoutes');
 
 //GLOBAL MIDDLEWARES
 //1. Set security HTTP headers
-app.use(helmet());
+app.use(helmet.contentSecurityPolicy({
+    directives: {
+        defaultSrc: ["'self'"],
+        scriptSrc: ["'self'", "https://api.mapbox.com/mapbox-gl-js/v2.9.1/mapbox-gl.js"], //set script source to allow only from self and mapbox
+        workerSrc: ["'self'", "blob:"], //set script source to allow only from self and mapbox
+        connectSrc: ["'self'", "https://api.mapbox.com", "https://events.mapbox.com"], //set script source to allow only from self and mapbox
+    }
+}));
 
 //2. Get detail of request
 if (process.env.NODE_ENV === 'development') {
