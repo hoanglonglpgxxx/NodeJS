@@ -19,3 +19,9 @@ function createFormatWrap(opts) {
 function createFormatWrap(opts) {
     return new Format(opts);
   } - [error] - undefined - undefined - 404 - Can't find /https://api.mapbox.com/mapbox-gl-js/v2.9.1/mapbox-gl.css on this server - 
+function createFormatWrap(opts) {
+    return new Format(opts);
+  } - [error] - undefined - undefined - 400 - res.status.render is not a function - 
+function createFormatWrap(opts) {
+    return new Format(opts);
+  } - [error] - undefined - undefined - 404 - Can't find /favicon.ico on this server - 
