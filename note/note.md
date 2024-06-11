@@ -18,4 +18,4 @@
 - xóa: npm uninstall ten_package
 - Cấu hình env: NODE_ENV=tên_env nodemon tên_file
   npm i eslint prettier eslint-config-prettier eslint-plugin-prettier eslint-config-airbnb eslint-plugin-node eslint-plugin-import eslint-plugin-jsx-a11y eslint-plugin-react --sav (chỉ run được locally)
-  npm i @babel/polyfill axios
+  npm i @babel/polyfill axios parcel-bundler
