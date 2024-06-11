@@ -6,6 +6,7 @@ const helmet = require('helmet');
 const mongoSanitize = require('express-mongo-sanitize');
 const xss = require('xss-clean');
 const hpp = require('hpp');
+const cookieParser = require('cookie-parser');
 
 const app = express();
 app.set('view engine', 'pug');
@@ -23,7 +24,7 @@ const reviewRouter = require('./routes/reviewRoutes');
 app.use(helmet.contentSecurityPolicy({
     directives: {
         defaultSrc: ["'self'"],
-        scriptSrc: ["'self'", "https://api.mapbox.com/mapbox-gl-js/v2.9.1/mapbox-gl.js"], //set script source to allow only from self and mapbox
+        scriptSrc: ["'self'", "https://api.mapbox.com/mapbox-gl-js/v2.9.1/mapbox-gl.js", "https://cdnjs.cloudflare.com/ajax/libs/axios/1.7.2/axios.min.js"], //set script source to allow only from self and mapbox
         workerSrc: ["'self'", "blob:"], //set script source to allow only from self and mapbox
         connectSrc: ["'self'", "https://api.mapbox.com", "https://events.mapbox.com"], //set script source to allow only from self and mapbox
     }
@@ -44,6 +45,7 @@ const limiter = rateLimit({
 app.use('/api', limiter);//apply for all APIs
 //4. Body parser, reading data from body into req.body
 app.use(express.json({ limit: '10kb' }));
+app.use(cookieParser());
 
 //5. Data sanitization against NoSQL query injection, disable query injection in req.body, req.query, req.params
 app.use(mongoSanitize());
@@ -64,7 +66,7 @@ app.use(express.static(path.join(__dirname, 'public')));
 //Test middleware
 app.use((req, res, next) => {
     req.requestTime = new Date().toISOString();
-    // console.log(req.headers);
+    console.log(req.cookies);
 
     next();
 });

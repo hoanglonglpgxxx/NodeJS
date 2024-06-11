@@ -64,7 +64,7 @@ exports.login = catchAsync(async (req, res, next) => {
     //2. Check if user exists && password is correct
     const user = await User.findOne({ email: email }).select('+password');
     if (!user || !(await user.correctPassword(password, user.password))) {
-        return next(new AppError('Incorrect email or password', 401));
+        return next(new AppError('Incorrect email or password!', 401));
     }
 
     //Maxium login attemps to 
@@ -78,7 +78,7 @@ exports.login = catchAsync(async (req, res, next) => {
             return next(new AppError('You have been locked out for 12 hours', 401));
         }
 
-        return next(new AppError('Incorrect email or password 123', 401));
+        return next(new AppError('Incorrect email or password', 401));
     }
 
     user.loginAttempts = 0;
@@ -97,12 +97,18 @@ exports.protect = catchAsync(async (req, res, next) => {
     //1. Getting token and check if it's there
     if (req.headers.authorization && req.headers.authorization.startsWith('Bearer')) {
         token = req.headers.authorization.split(' ')[1];
+    } else if (req.cookies.jwt) {
+        token = req.cookies.jwt;
     }
+
     if (!token) {
         return next(new AppError('Require login to access', 401));
     }
     //2. Verify token
-    const decoded = await promisify(jwt.verify)(token, process.env.JWT_SECRET);
+    const decoded = await promisify(jwt.verify)(
+        token,
+        process.env.JWT_SECRET
+    );
     //3. Check if user still exists
     const currentUser = await User.findById(decoded.id);
     if (!currentUser) {
@@ -114,6 +120,32 @@ exports.protect = catchAsync(async (req, res, next) => {
     }
 
     req.user = currentUser;
+    next();
+});
+
+//RENDER PAGES, NO ERROR HANDLING
+exports.isLoggedIn = catchAsync(async (req, res, next) => {
+    webhookController.sendToDiscord(req, res, next);
+    if (req.cookies.jwt) {
+        //1. Verify token
+        const decoded = await promisify(jwt.verify)(
+            req.cookies.jwt,
+            process.env.JWT_SECRET
+        );
+        //2. Check if user still exists
+        const currentUser = await User.findById(decoded.id);
+        if (!currentUser) {
+            return next();
+        }
+        //3. Check if user changed password after the token was issued
+        if (currentUser.afterChangePassword(decoded.iat)) {
+            return next();
+        }
+
+        //There is a logged in user
+        res.locals.user = currentUser; //all pug templates can access this res.locals.x variable
+        return next();
+    }
     next();
 });
 

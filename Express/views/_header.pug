@@ -10,5 +10,11 @@ header.header
         //- a(href='#').nav_el My bookings
         //-   img.nav__user-img(src='img/user.jpg' alt='User photo')
         //-   span Mits
-        a(href='/login').nav__el Log in
-        a.nav__el.nav__el--cta(href='#') Sign up
+        if user 
+            a(href='/me').nav__el
+                img.nav__user-img(src=`/img/users/${user.photo}`, alt='User photo')
+                span= user.name.split(' ')[0]
+            a(href='/logout').nav__el Log out
+        else
+            a(href='/login').nav__el Log in
+            a.nav__el.nav__el--cta(href='#') Sign up

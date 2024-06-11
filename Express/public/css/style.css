@@ -1262,10 +1262,10 @@ body {
 }
 .form__input:focus {
   outline: none;
-  border-bottom: 3px solid #55c57a;
+  border-bottom: 3.5px solid #55c57a;
 }
 .form__input:focus:invalid {
-  border-bottom: 3px solid #ff7730;
+  border-bottom: 3.5px solid #f55600;
 }
 .form__input::-webkit-input-placeholder {
   color: #bbb;
