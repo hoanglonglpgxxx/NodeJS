@@ -9,11 +9,14 @@
   "scripts": {
     "start:dev": "nodemon Express/server.js",
     "start:prod": "set NODE_ENV=production&&nodemon Express/server.js",
-    "debug": "ndb Express/server.js"
+    "debug": "ndb Express/server.js",
+    "watch:js": "parcel watch Express/public/js/index.js --out-dir Express/public/js --out-file bundle.js",
+    "build:js": "parcel watch Express/public/js/index.js --out-dir Express/public/js --out-file bundle.js"
   },
   "author": "Mits",
   "license": "ISC",
   "dependencies": {
+    "@babel/polyfill": "^7.12.1",
     "axios": "^1.7.2",
     "bcrypt": "^5.1.1",
     "cookie-parser": "^1.4.6",
@@ -44,6 +47,7 @@
     "eslint-plugin-react": "^7.33.2",
     "ndb": "^1.1.5",
     "nodemon": "^3.1.0",
+    "parcel-bundler": "^1.12.5",
     "prettier": "^3.2.5"
   }
 }

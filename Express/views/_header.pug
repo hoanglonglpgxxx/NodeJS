@@ -6,10 +6,6 @@ header.header
         img(src='/img/logo-white.png' alt='Mitstours logo')
 
     nav.nav.nav--user
-        //- a(href='#').nav_el My bookings
-        //- a(href='#').nav_el My bookings
-        //-   img.nav__user-img(src='img/user.jpg' alt='User photo')
-        //-   span Mits
         if user 
             a(href='/me').nav__el
                 img.nav__user-img(src=`/img/users/${user.photo}`, alt='User photo')

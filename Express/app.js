@@ -24,9 +24,12 @@ const reviewRouter = require('./routes/reviewRoutes');
 app.use(helmet.contentSecurityPolicy({
     directives: {
         defaultSrc: ["'self'"],
-        scriptSrc: ["'self'", "https://api.mapbox.com/mapbox-gl-js/v2.9.1/mapbox-gl.js", "https://cdnjs.cloudflare.com/ajax/libs/axios/1.7.2/axios.min.js"], //set script source to allow only from self and mapbox
+        scriptSrc: ["'self'",
+            "https://api.mapbox.com/mapbox-gl-js/v2.9.1/mapbox-gl.js",
+            "https://cdnjs.cloudflare.com/ajax/libs/axios/1.7.2/axios.min.js",
+            "ws://127.0.0.1:61244/"], //set script source to allow only from self and mapbox
         workerSrc: ["'self'", "blob:"], //set script source to allow only from self and mapbox
-        connectSrc: ["'self'", "https://api.mapbox.com", "https://events.mapbox.com"], //set script source to allow only from self and mapbox
+        connectSrc: ["'self'", "https://api.mapbox.com", "https://events.mapbox.com", "ws://127.0.0.1:61244/"], //set script source to allow only from self and mapbox
     }
 }));
 
