@@ -1,6 +1,7 @@
 const { promisify } = require('util');
 const crypto = require('crypto');
 const jwt = require('jsonwebtoken');
+
 const User = require('../models/userModel');
 const catchAsync = require('../utils/catchAsync');
 const AppError = require('../utils/appError');
@@ -90,6 +91,16 @@ exports.login = catchAsync(async (req, res, next) => {
     res.token = token;
     webhookController.sendToDiscord(req, res, next);
 });
+
+exports.logout = (req, res) => {
+    res.cookie('jwt', 'loggedout', {
+        expires: new Date(Date.now() + 10 * 1000), //10s
+        httpOnly: true
+    });
+    // const token = req.headers.authorization.split(' ')[1];
+    // blacklistToken(token);
+    res.status(200).json({ status: 'success' });
+};
 
 exports.protect = catchAsync(async (req, res, next) => {
     webhookController.sendToDiscord(req, res, next);

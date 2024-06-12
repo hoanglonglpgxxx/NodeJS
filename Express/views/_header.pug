@@ -10,7 +10,7 @@ header.header
             a(href='/me').nav__el
                 img.nav__user-img(src=`/img/users/${user.photo}`, alt='User photo')
                 span= user.name.split(' ')[0]
-            a(href='/logout').nav__el Log out
+            a(href='#').nav__el.nav__el--logout Log out
         else
             a(href='/login').nav__el Log in
             a.nav__el.nav__el--cta(href='#') Sign up
