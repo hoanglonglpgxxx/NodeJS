@@ -1,0 +1,3 @@
+function createFormatWrap(opts) {
+    return new Format(opts);
+  } - [error] - undefined - undefined - 404 - Can't find /bundle.js.map on this server - 
