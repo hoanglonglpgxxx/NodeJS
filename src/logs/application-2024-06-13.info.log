@@ -28,3 +28,24 @@ function createFormatWrap(opts) {
 function createFormatWrap(opts) {
     return new Format(opts);
   } - [error] - undefined - undefined - 404 - Can't find /akjsdajkhsdj on this server - 
+function createFormatWrap(opts) {
+    return new Format(opts);
+  } - [error] - undefined - undefined - 404 - Can't find /akjsdajkhsdj on this server - 
+function createFormatWrap(opts) {
+    return new Format(opts);
+  } - [error] - undefined - undefined - 404 - Can't find /akjsdajkhsdj on this server - 
+function createFormatWrap(opts) {
+    return new Format(opts);
+  } - [error] - undefined - undefined - 404 - Can't find /akjsdajkhsdj on this server - 
+function createFormatWrap(opts) {
+    return new Format(opts);
+  } - [error] - undefined - undefined - 404 - Can't find /akjsdajkhsdj on this server - 
+function createFormatWrap(opts) {
+    return new Format(opts);
+  } - [error] - undefined - undefined - 401 - Require login to access - 
+function createFormatWrap(opts) {
+    return new Format(opts);
+  } - [error] - undefined - undefined - 401 - Require login to access - 
+function createFormatWrap(opts) {
+    return new Format(opts);
+  } - [error] - undefined - undefined - 401 - Require login to access - 
