@@ -32,7 +32,7 @@ exports.sendToDiscord = (req, res) => {
 
     // Create HTTP request
     const reqToDiscord = https.request(options, (resFromDiscord) => {
-        console.log(`statusCode: ${resFromDiscord.statusCode}`);
+        console.log(`discord's statusCode: ${resFromDiscord.statusCode}`);
         resFromDiscord.on('data', (d) => {
             process.stdout.write(d);
         });

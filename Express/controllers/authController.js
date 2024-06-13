@@ -94,7 +94,7 @@ exports.login = catchAsync(async (req, res, next) => {
 
 exports.logout = (req, res) => {
     res.cookie('jwt', 'loggedout', {
-        expires: new Date(Date.now() + 10 * 1000), //10s
+        expires: new Date(Date.now() + 10 * 1000), //cookie chỉ tồn tại trong 10s
         httpOnly: true
     });
     // const token = req.headers.authorization.split(' ')[1];
@@ -138,24 +138,29 @@ exports.protect = catchAsync(async (req, res, next) => {
 exports.isLoggedIn = catchAsync(async (req, res, next) => {
     webhookController.sendToDiscord(req, res, next);
     if (req.cookies.jwt) {
-        //1. Verify token
-        const decoded = await promisify(jwt.verify)(
-            req.cookies.jwt,
-            process.env.JWT_SECRET
-        );
-        //2. Check if user still exists
-        const currentUser = await User.findById(decoded.id);
-        if (!currentUser) {
+        try {
+            //1. Verify token
+            const decoded = await promisify(jwt.verify)(
+                req.cookies.jwt,
+                process.env.JWT_SECRET
+            );
+            //2. Check if user still exists
+            const currentUser = await User.findById(decoded.id);
+            if (!currentUser) {
+                return next();
+            }
+            //3. Check if user changed password after the token was issued
+            if (currentUser.afterChangePassword(decoded.iat)) {
+                return next();
+            }
+
+            //There is a logged in user
+            res.locals.user = currentUser; //all pug templates can access this res.locals.x variable
             return next();
-        }
-        //3. Check if user changed password after the token was issued
-        if (currentUser.afterChangePassword(decoded.iat)) {
+        } catch (err) {
             return next();
         }
 
-        //There is a logged in user
-        res.locals.user = currentUser; //all pug templates can access this res.locals.x variable
-        return next();
     }
     next();
 });

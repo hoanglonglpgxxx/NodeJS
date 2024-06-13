@@ -53,16 +53,24 @@ const handleTokenExpiredErrorDB = err => {
 /**
  * Send Error in Development
  * @param {Object} err
+ * @param {Object} req
  * @param {Object} res
  * @return {Object} AppError
  */
-const sendErrorDev = (err, res) => {
-    res.status(err.statusCode).json({
-        status: err.status,
-        error: err,
-        message: err.message,
-        stack: err.stack
-    });
+const sendErrorDev = (err, req, res) => {
+    if (req.originalUrl.startsWith('/api')) {
+        res.status(err.statusCode).json({
+            status: err.status,
+            error: err,
+            message: err.message,
+            stack: err.stack
+        });
+    } else {
+        res.status(err.statusCode).render('error', {
+            title: '404',
+            msg: err.message
+        });
+    }
 };
 
 /**
@@ -71,22 +79,26 @@ const sendErrorDev = (err, res) => {
  * @param {Object} res
  * @return {Object} AppError
  */
-const sendErrorProd = (err, res) => {
-    //Operation/trusted err: send msg to client
-    if (err.isOperational) {
-        res.status(err.statusCode).json({
-            status: err.status,
-            message: err.message,
-        });
-        //Programming or other unknown err: dont leak err details
-    } else {
+const sendErrorProd = (err, req, res) => {
+    if (req.originalUrl.startsWith('/api')) {
+        if (err.isOperational) {
+            return res.status(err.statusCode).json({
+                status: err.status,
+                message: err.message,
+            });
+            //Programming or other unknown err: dont leak err details
+        }
         console.error('ERROR 💥', err);
 
-        res.status(500).json({
+        return res.status(500).json({
             status: 'error',
             message: 'Something wrong!!!'
         });
     }
+    return res.status(err.statusCode).render('error', {
+        title: '404',
+        msg: 'Please try again'
+    });
 };
 
 module.exports = (err, req, res, next) => {
@@ -94,7 +106,7 @@ module.exports = (err, req, res, next) => {
     err.status = err.status || 'error';
 
     if (process.env.NODE_ENV === 'development') {
-        sendErrorDev(err, res);
+        sendErrorDev(err, req, res);
     } else if (process.env.NODE_ENV === 'production') {
         let error = err;
 
@@ -103,6 +115,6 @@ module.exports = (err, req, res, next) => {
         if (error.name === 'ValidationError') error = handleValidationErrorDB(error);
         if (error.name === 'JsonWebTokenError') error = handleJWTTokenErrorDB(error);
         if (error.name === 'TokenExpiredError') error = handleTokenExpiredErrorDB(error);
-        sendErrorProd(error, res);
+        sendErrorProd(error, req, res);
     }
 };

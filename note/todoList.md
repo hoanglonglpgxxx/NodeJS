@@ -15,3 +15,4 @@ READ BOOK PAGE
 - import/export json - excel
 - add js để validate các field trong login/signup
 - implement token blacklist để logout
+- thiếu reroute khi đã login thì /login trỏ về /me
