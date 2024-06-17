@@ -14,5 +14,6 @@ READ BOOK PAGE
 - TABLE HAS NAME, LINK TO IMAGE OF BOOK, RATING STARS, DESCRIPTION OF REVIEW CONTENT, TYPE(EBOOK, BOOK, PDF,...), NUMBER, CREATED TIME, END TIME(END TIME WILL BE DISABLE, ONLY CHANGE AS LAST UPDATE TIME, can set to unchangable state)
 - import/export json - excel
 - add js để validate các field trong login/signup
-- !!!!!!!!!! implement token blacklist để logout
+- implement token blacklist để logout
+- thiếu reroute khi đã login thì /login trỏ về /me
 - check lại luồng môi trường prod, hình như đang lỗi error page
