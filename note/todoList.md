@@ -16,4 +16,5 @@ READ BOOK PAGE
 - add js để validate các field trong login/signup
 - implement token blacklist để logout
 - thiếu reroute khi đã login thì /login trỏ về /me
+- ở errorPage đang chưa báo đúng khi đã login
 - check lại luồng môi trường prod, hình như đang lỗi error page

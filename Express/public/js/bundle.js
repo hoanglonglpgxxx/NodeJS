@@ -12610,7 +12610,7 @@ var _mapbox = require("./mapbox.js");
 /* eslint-disable*/
 
 var MAP_BOX = document.getElementById('map');
-var LOGIN_FORM = document.querySelector('.form');
+var LOGIN_FORM = document.querySelector('.form--login');
 var LOGOUT_BTN = document.querySelector('.nav__el--logout');
 if (MAP_BOX) {
   var locations = JSON.parse(MAP_BOX.dataset.locations);
