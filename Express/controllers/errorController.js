@@ -66,7 +66,7 @@ const sendErrorDev = (err, req, res) => {
             stack: err.stack
         });
     } else {
-        console.log(req);
+        // console.log(req);
         res.status(err.statusCode).render('error', {
             title: '404',
             msg: err.message,
