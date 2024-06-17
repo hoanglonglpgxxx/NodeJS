@@ -95,9 +95,18 @@ const sendErrorProd = (err, req, res) => {
             message: 'Something wrong!!!'
         });
     }
+    if (err.isOperational) {
+        return res.status(err.statusCode).render('error', {
+            title: 'Some thing wrong!!!',
+            msg: err.message,
+        });
+        //Programming or other unknown err: dont leak err details
+    }
+    console.error('ERROR 💥', err);
+
     return res.status(err.statusCode).render('error', {
-        title: '404',
-        msg: 'Please try again'
+        title: 'Some thing wrong!!!',
+        msg: err.message
     });
 };
 
@@ -108,13 +117,15 @@ module.exports = (err, req, res, next) => {
     if (process.env.NODE_ENV === 'development') {
         sendErrorDev(err, req, res);
     } else if (process.env.NODE_ENV === 'production') {
-        let error = err;
+        let error = { ...err };
+        error.message = err.message;
 
         if (error.name === 'CastError') error = handleCastErrorDB(error);
         if (error.code === 11000) error = handleDuplicateFieldsDB(error);
         if (error.name === 'ValidationError') error = handleValidationErrorDB(error);
         if (error.name === 'JsonWebTokenError') error = handleJWTTokenErrorDB(error);
         if (error.name === 'TokenExpiredError') error = handleTokenExpiredErrorDB(error);
+        console.log(error.message);
         sendErrorProd(error, req, res);
     }
 };
