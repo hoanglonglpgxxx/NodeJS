@@ -15,10 +15,18 @@ router.patch('/reset-password/:token', authController.resetPassword);
 router.use(authController.protect);//do middleware có tính tuần tự, nên phải đặt protect ở đây thì các route dưới được protect
 
 router.patch('/update-password', authController.updatePassword);
-router.patch('/update-data', userController.updateData);
+router.patch(
+    '/update-data',
+    userController.uploadUserImg,
+    userController.updateData
+);
 
 router.delete('/delete-self', userController.deleteSelf);
-router.get('/me', userController.getMe, userController.getUser);
+router.get(
+    '/me',
+    userController.getMe,
+    userController.getUser
+);
 //thiếu updateMe
 
 router.use(authController.restrictRole('admin'));

@@ -80,7 +80,6 @@ userSchema.pre('save', function (next) {
     if (!this.isModified('password') || this.isNew) return next(); //isNew là prop trong mongoose, mark là new document
 
     this.lastPasswordChangeTime = Date.now() - 1000;
-    console.log(1, this.lastPasswordChangeTime);
     return next();
 });
 
