@@ -1,0 +1,6 @@
+function createFormatWrap(opts) {
+    return new Format(opts);
+  } - [error] - undefined - undefined - 401 - Your current password is wrong - 
+function createFormatWrap(opts) {
+    return new Format(opts);
+  } - [error] - undefined - undefined - 400 - User validation failed: confirmPassword: Passwords do not match - 
