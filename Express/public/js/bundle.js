@@ -12688,12 +12688,11 @@ document.addEventListener('DOMContentLoaded', function () {
   if (USER_DATA_FORM) {
     USER_DATA_FORM.addEventListener('submit', function (e) {
       e.preventDefault();
-      var name = document.getElementById('name').value;
-      var email = document.getElementById('email').value;
-      (0, _updateSettings.updateInfo)({
-        name: name,
-        email: email
-      }, 'data');
+      var form = new FormData();
+      form.append('name', document.getElementById('name').value);
+      form.append('email', document.getElementById('email').value);
+      form.append('photo', document.getElementById('photo').files[0]);
+      (0, _updateSettings.updateInfo)(form, 'data');
     });
   }
   if (USER_PASSWORD_FORM) {

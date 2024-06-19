@@ -29,9 +29,12 @@ document.addEventListener('DOMContentLoaded', function () {
     if (USER_DATA_FORM) {
         USER_DATA_FORM.addEventListener('submit', e => {
             e.preventDefault();
-            const name = document.getElementById('name').value;
-            const email = document.getElementById('email').value;
-            updateInfo({ name, email }, 'data');
+            const form = new FormData();
+            form.append('name', document.getElementById('name').value);
+            form.append('email', document.getElementById('email').value);
+            form.append('photo', document.getElementById('photo').files[0]);
+
+            updateInfo(form, 'data');
         });
     }
     if (USER_PASSWORD_FORM) {
