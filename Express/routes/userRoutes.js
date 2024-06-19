@@ -18,6 +18,7 @@ router.patch('/update-password', authController.updatePassword);
 router.patch(
     '/update-data',
     userController.uploadUserImg,
+    userController.resizeUserPhoto,
     userController.updateData
 );
 
