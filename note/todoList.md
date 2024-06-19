@@ -1,5 +1,4 @@
 //tìm hiểu .create(),.save(),xem lại section async await
-//đang lỗi fail thì không ghi log
 //sửa lại logic - cơ chế ghi log, cho hàm writeLog vào hàm catchAsync, khi có class appError thì lấy status code và msg từ apperror
 //đang có 1 vấn đề, lúc call /signup nếu lấy req.body thì bị lộ pass, cũng không phải password sau mã hóa
 FIX LỖI KHI RUN SERVER

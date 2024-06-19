@@ -59,6 +59,8 @@ exports.updateData = catchAsync(async (req, res, next) => {
 
     //2. Filter only allowed to update fields to update
     const filteredBody = filterObj(req.body, 'name', 'email');
+    if (req.file) filteredBody.photo = req.file.filename;
+
     const updatedUser = await User.findByIdAndUpdate(req.user.id, filteredBody, {
         new: true,
         runValidators: true
