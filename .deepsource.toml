@@ -1,7 +1,9 @@
 version = 1
 
 exclude_patterns = [
-  "*/bundle.js"
+  "*/bundle.js",
+  "bundle.js",
+  "*.bunbdle.js"
 ]
 
 [[analyzers]]
