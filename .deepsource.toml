@@ -1,12 +1,11 @@
 version = 1
 
 exclude_patterns = [
-  "*/bundle.js",
-  "bundle.js",
-  "*.bunbdle.js"
+  "*/bundle.js"
 ]
 
 [[analyzers]]
 name = "javascript"
+
   [analyzers.meta]
   environment = ["nodejs"]
