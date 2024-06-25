@@ -35,19 +35,19 @@ const upload = multer({
 
 exports.uploadUserImg = upload.single('photo');
 
-exports.resizeUserPhoto = (req, res, next) => {
+exports.resizeUserPhoto = catchAsync(async (req, res, next) => {
     if (!req.file) return next();
 
     req.file.filename = `user-${req.user.id}-${Date.now()}.jpeg`;
 
-    sharp(req.file.buffer)
+    await sharp(req.file.buffer)
         .resize(500, 500)
         .toFormat('jpeg')
         .jpeg({ quality: 90 })
         .toFile(`E:/NodeJS/Express/public/img/users/${req.file.filename}`);
 
     next();
-};
+});
 
 exports.getAllUsers = factoryHandler.getAll(User);
 
