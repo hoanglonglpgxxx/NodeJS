@@ -40,13 +40,13 @@ router
         tourController.getMonthlyPlan
     );
 
-
-
 router
     .route('/:id')
     .get(tourController.getTour)
     .patch(
         authController.restrictRole('lead-guide', 'admin'),
+        tourController.uploadTourImages,
+        tourController.resizeTourImages,
         tourController.updateTour
     )
     .delete(
