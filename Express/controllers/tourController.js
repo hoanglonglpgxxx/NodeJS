@@ -65,6 +65,22 @@ exports.resizeTourImages = catchAsync(async (req, res, next) => {
         .toFile(`E:/NodeJS/Express/public/img/tours/${req.body.imageCover}`);
 
     //2. Images
+    req.body.images = [];
+
+    //Promise.all to wait for all images to be processed, then push to req.body.images
+    await Promise.all(
+        req.files.images.map(async (file, i) => {
+            const filename = `tour-${req.params.id}-${Date.now()}-${i + 1}.jpeg`;
+
+            await sharp(file.buffer)
+                .resize(2000, 1333)
+                .toFormat('jpeg')
+                .jpeg({ quality: 90 })
+                .toFile(`E:/NodeJS/Express/public/img/tours/${filename}`);
+
+            req.body.images.push(filename);
+        })
+    );
     next();
 });
 
