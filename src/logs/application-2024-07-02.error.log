@@ -34,3 +34,9 @@ function createFormatWrap(opts) {
 function createFormatWrap(opts) {
     return new Format(opts);
   } - [error] - undefined - undefined - 400 - connect ECONNREFUSED ::1:587 - 
+function createFormatWrap(opts) {
+    return new Format(opts);
+  } - [error] - undefined - undefined - 400 - E11000 duplicate key error collection: tours-test.users index: email_1 dup key: { email: "mitsne2@mailsac.com" } - 
+function createFormatWrap(opts) {
+    return new Format(opts);
+  } - [error] - undefined - undefined - 400 - connect ECONNREFUSED ::1:587 - 
