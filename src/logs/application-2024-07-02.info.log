@@ -1,0 +1,30 @@
+function createFormatWrap(opts) {
+    return new Format(opts);
+  } - [error] - undefined - undefined - 400 - E11000 duplicate key error collection: tours-test.users index: email_1 dup key: { email: "monica@gmail.com" } - 
+function createFormatWrap(opts) {
+    return new Format(opts);
+  } - [error] - undefined - undefined - 400 - ENOENT: no such file or directory, open 'E:\NodeJS\Express\views\email\welcome.pug}' - 
+function createFormatWrap(opts) {
+    return new Format(opts);
+  } - [error] - undefined - undefined - 400 - E:\NodeJS\Express\views\email\_style.pug:258:1
+    256|         border-color: #2e864b !important; 
+    257|     } 
+  > 258| }
+---------^
+
+unexpected text "}" - 
+function createFormatWrap(opts) {
+    return new Format(opts);
+  } - [error] - undefined - undefined - 400 - E11000 duplicate key error collection: tours-test.users index: email_1 dup key: { email: "monicaaazz@gmail.com" } - 
+function createFormatWrap(opts) {
+    return new Format(opts);
+  } - [error] - undefined - undefined - 400 - htmlToText.fromString is not a function - 
+function createFormatWrap(opts) {
+    return new Format(opts);
+  } - [error] - undefined - undefined - 400 - htmlToText.fromString is not a function - 
+function createFormatWrap(opts) {
+    return new Format(opts);
+  } - [error] - undefined - undefined - 400 - htmlToText.fromString is not a function - 
+function createFormatWrap(opts) {
+    return new Format(opts);
+  } - [error] - undefined - undefined - 400 - htmlToText is not a function - 
