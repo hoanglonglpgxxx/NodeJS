@@ -47,7 +47,7 @@ module.exports = class Email {
 
         //2. Define email options
         const mailOptions = {
-            from: this.form,
+            from: this.from,
             to: this.to,
             subject,
             html,
@@ -60,5 +60,9 @@ module.exports = class Email {
 
     async sendWelcome() {
         await this.send('welcome', 'Welcome to the MitsNgeiTher Family!');
+    }
+
+    async sendPasswordReset() {
+        await this.send('passwordReset', 'Your password reset token (valid for only 10 minutes)');
     }
 };
