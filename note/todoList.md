@@ -17,3 +17,5 @@ READ BOOK PAGE
 - thiếu reroute khi đã login thì /login trỏ về /me
 - ở errorPage đang chưa báo đúng khi đã login
 - check lại luồng môi trường prod, hình như đang lỗi error page
+
+Thêm nút open Gmail like this, nút sẽ có link dạng https://mail.google.com/mail/u/long.ezmar.001@gmail.com/#search/from:notifications@stripe.com
