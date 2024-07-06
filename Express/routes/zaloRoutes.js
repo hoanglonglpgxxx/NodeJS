@@ -1,7 +1,6 @@
+const express = require('express');
 
 const zaloController = require('../controllers/zaloController');
-
-const express = require('express');
 
 const router = express.Router();
 
