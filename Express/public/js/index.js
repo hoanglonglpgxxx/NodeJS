@@ -3,12 +3,14 @@ import '@babel/polyfill';
 import { login, logout } from './login.js';
 import { displayMap } from './mapbox.js';
 import { updateInfo } from './updateSettings.js';
+import { bookingTour } from './stripe.js';
 
 const MAP_BOX = document.getElementById('map');
 const LOGIN_FORM = document.querySelector('.form--login');
 const LOGOUT_BTN = document.querySelector('.nav__el--logout');
 const USER_DATA_FORM = document.querySelector('.form-user-data');
 const USER_PASSWORD_FORM = document.querySelector('.form-user-password');
+const BOOKING_BTN = document.querySelector('#book-tour');
 
 if (MAP_BOX) {
     const locations = JSON.parse(MAP_BOX.dataset.locations);
@@ -47,6 +49,13 @@ document.addEventListener('DOMContentLoaded', function () {
             await updateInfo({ currentPassword, password, confirmPassword }, 'password');
 
             document.querySelector('.btn--save-password').textContent = 'Save password';
+        });
+    }
+    if (BOOKING_BTN) {
+        BOOKING_BTN.addEventListener('click', e => {
+            e.target.textContent = 'Processing...';
+            const { tourId } = e.target.dataset;
+            bookingTour(tourId);
         });
     }
 });
