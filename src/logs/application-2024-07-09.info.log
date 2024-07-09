@@ -157,3 +157,6 @@ function createFormatWrap(opts) {
 function createFormatWrap(opts) {
     return new Format(opts);
   } - [error] - undefined - undefined - 404 - Can't find /bundle.js.map on this server - 
+function createFormatWrap(opts) {
+    return new Format(opts);
+  } - [error] - undefined - undefined - 404 - No document founded with ID 668cfb11a275bf629ccb1353 - 
