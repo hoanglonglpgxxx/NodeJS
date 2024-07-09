@@ -7,11 +7,11 @@
   "description": "Learning NodeJS",
   "main": "index.js",
   "scripts": {
-    "start:dev": "nodemon Express/server.js",
-    "start:prod": "set NODE_ENV=production&&nodemon Express/server.js",
-    "debug": "ndb Express/server.js",
-    "watch:js": "parcel watch Express/public/js/index.js --out-dir Express/public/js --out-file bundle.js",
-    "build:js": "parcel watch Express/public/js/index.js --out-dir Express/public/js --out-file bundle.js"
+    "start:dev": "nodemon server.js",
+    "start:prod": "set NODE_ENV=production&&nodemon server.js",
+    "debug": "ndb server.js",
+    "watch:js": "parcel watch public/js/index.js --out-dir public/js --out-file bundle.js",
+    "build:js": "parcel watch public/js/index.js --out-dir public/js --out-file bundle.js"
   },
   "author": "Mits",
   "license": "ISC",
