@@ -1,6 +1,7 @@
-const Tour = require('../models/tourModel');
-const catchAsync = require('../utils/catchAsync');
 const AppError = require('../utils/appError');
+const catchAsync = require('../utils/catchAsync');
+const Tour = require('../models/tourModel');
+const Booking = require('../models/bookingModel');
 const User = require('../models/userModel');
 
 exports.getOverview = catchAsync(async (req, res) => {
@@ -38,6 +39,24 @@ exports.getAccount = catchAsync(async (req, res) => {
         title: 'Your account',
         user: req.user
     });
+});
+
+exports.getMyTours = catchAsync(async (req, res,) => {
+    // 1) Find all bookings
+    const bookings = await Booking.find({ user: req.user.id });
+    // 2) Find tours with the returned IDs
+    const tourIds = bookings.map(el => el.tour);
+    const tours = await Tour.find({ _id: { $in: tourIds } });
+
+    res.status(200).render('overview', {
+        title: 'Your account',
+        tours
+    });
+    //virtual populate for booking NOT FINISHED, NOT WORKING
+    /* const bookings = await Booking.find({ user: req.user.id }).populate({
+        path: 'tour',
+        select: 'name'
+    }); */
 });
 
 exports.updateUserData = catchAsync(async (req, res,) => {

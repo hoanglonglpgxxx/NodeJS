@@ -109,6 +109,8 @@ c. many:many -> 2way referencing
 
 folder 13 vid 17
 
+ctrl L enter to clear terminal cli
+
 ZALO Số thẻ	4111111111111111
 Tên	NGUYEN VAN A
 Ngày hết hạn	01/25

@@ -1,5 +1,5 @@
 const express = require('express');
-const { getOverview, getTour, getLoginForm, getAccount, updateUserData } = require('../controllers/viewsController');
+const { getOverview, getTour, getLoginForm, getAccount, updateUserData, getMyTours } = require('../controllers/viewsController');
 const authController = require('../controllers/authController');
 const bookingController = require('../controllers/bookingController');
 
@@ -13,6 +13,7 @@ router.get('/',
 router.get('/tour/:slug', authController.isLoggedIn, getTour);
 router.get('/login', authController.isLoggedIn, getLoginForm);
 router.get('/me', authController.protect, getAccount);
+router.get('/my-tours', authController.protect, authController.isLoggedIn, getMyTours);
 
 router.post('/submit-user-data', authController.protect, updateUserData);
 
