@@ -182,11 +182,11 @@ tourSchema.pre(/^find/, function (next) {
 });
 
 //Run after query executed
-tourSchema.post(/^find/, function (docs, next) {
+/* tourSchema.post(/^find/, function (docs, next) {
     console.log(`Query took ${Date.now() - this.start} ms!`);
     // console.log(docs);
     next();
-});
+}); */
 
 //AGGREGATION MIDDLEWARE in mongoose
 /* tourSchema.pre('aggregate', function (next) {

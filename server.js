@@ -26,7 +26,7 @@ const app = require('./app');
 
 const port = process.env.PORT || 3000;
 const server = app.listen(port, () => {
-    console.log(`server running on port ${port}`);
+    // console.log(`server running on port ${port}`);
 });
 
 //catch event unhandledRejection, xử lý cho async code, khi có lỗi chưa xử lý sẽ trigger event này

@@ -25,7 +25,6 @@ router.post('/callback', async (req, res) => {
         const mac = crypto.createHmac('sha256', config.key2)
             .update(dataStr)
             .digest('hex').toString();
-        console.log("mac =", mac);
 
 
         // kiểm tra callback hợp lệ (đến từ ZaloPay server)
@@ -38,7 +37,7 @@ router.post('/callback', async (req, res) => {
             // thanh toán thành công
             // merchant cập nhật trạng thái cho đơn hàng
             const dataJson = JSON.parse(dataStr, config.key2);
-            console.log("update order's status = success where apptransid =", dataJson.apptransid);
+            // console.log("update order's status = success where apptransid =", dataJson.apptransid);
 
             result.returncode = 1;
             result.returnmessage = "success";

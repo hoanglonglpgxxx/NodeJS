@@ -7,7 +7,7 @@ const mongoSanitize = require('express-mongo-sanitize');
 const xss = require('xss-clean');
 const hpp = require('hpp');
 const cookieParser = require('cookie-parser');
-// const CryptoJS = require('crypto-js'); // npm install crypto-js
+const compression = require('compression');
 
 const app = express();
 app.set('view engine', 'pug');
@@ -28,15 +28,11 @@ app.use(helmet.contentSecurityPolicy({
     directives: {
         defaultSrc: ["'self'"],
         scriptSrc: [
-            "'self'",
-            "https://api.mapbox.com/mapbox-gl-js/v2.9.1/mapbox-gl.js",
-            "https://cdnjs.cloudflare.com/ajax/libs/axios/1.7.2/axios.min.js",
-            "https://js.stripe.com/v3/",
-            "ws://127.0.0.1:51311/"], //set script source to allow only from self and mapbox
+            "'self'"], //set script source to allow only from self and mapbox
         workerSrc: ["'self'", "blob:"], //set script source to allow only from self and mapbox
-        connectSrc: ["'self'", "https://api.mapbox.com", "https://events.mapbox.com", "https://js.stripe.com/v3/", "ws://127.0.0.1:51311/"], //set script source to allow only from self and mapbox
-        imgSrc: ["'self'", "https://*.mapbox.com", "data:"],
-        frameSrc: ["'self'", "https://js.stripe.com/"] // Add this line to allow frames from Stripe
+        connectSrc: ["'self'"], //set script source to allow only from self and mapbox
+        imgSrc: ["'self'"],
+        frameSrc: ["'self'"] // Add this line to allow frames from Stripe
     }
 }));
 
@@ -73,6 +69,8 @@ app.use(hpp({
 
 //9. Serving static files
 app.use(express.static(path.join(__dirname, 'public')));
+
+app.use(compression());
 
 //Test middleware
 app.use((req, res, next) => {
