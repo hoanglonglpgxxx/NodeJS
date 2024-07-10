@@ -28,14 +28,17 @@ app.use(helmet.contentSecurityPolicy({
     directives: {
         defaultSrc: ["'self'"],
         scriptSrc: [
-            "'self'"], //set script source to allow only from self and mapbox
+            "'self'",
+            "https://api.mapbox.com/mapbox-gl-js/v2.9.1/mapbox-gl.js",
+            "https://cdnjs.cloudflare.com/ajax/libs/axios/1.7.2/axios.min.js",
+            "https://js.stripe.com/v3/",
+            "ws://127.0.0.1:51311/"], //set script source to allow only from self and mapbox
         workerSrc: ["'self'", "blob:"], //set script source to allow only from self and mapbox
-        connectSrc: ["'self'"], //set script source to allow only from self and mapbox
-        imgSrc: ["'self'"],
-        frameSrc: ["'self'"] // Add this line to allow frames from Stripe
+        connectSrc: ["'self'", "https://api.mapbox.com", "https://events.mapbox.com", "https://js.stripe.com/v3/", "ws://127.0.0.1:51311/"], //set script source to allow only from self and mapbox
+        imgSrc: ["'self'", "https://*.mapbox.com", "data:"],
+        frameSrc: ["'self'", "https://js.stripe.com/"] // Add this line to allow frames from Stripe
     }
 }));
-
 //2. Get detail of request
 if (process.env.NODE_ENV === 'development') {
     app.use(morgan('dev'));
