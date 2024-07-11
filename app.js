@@ -8,6 +8,7 @@ const xss = require('xss-clean');
 const hpp = require('hpp');
 const cookieParser = require('cookie-parser');
 const compression = require('compression');
+const cors = require('cors');
 
 const app = express();
 
@@ -25,6 +26,17 @@ const bookingRouter = require('./routes/bookingRoutes');
 const zalopayRouter = require('./routes/zaloRoutes');
 
 //GLOBAL MIDDLEWARES
+//Implement cors
+app.use(cors({
+    // origin: 'https://example.com', // Allow only this domain to access the resources
+    // methods: ['GET', 'POST'], // Allow only these methods
+    // allowedHeaders: ['Content-Type', 'Authorization'], // Allow only these headers
+    // credentials: true, // Allow cookies
+}));
+
+app.options('*', cors());
+// app.options('/api/v1/tours/:id', cors()); //chỉ allow cros api này
+
 //1. Set security HTTP headers
 app.use(helmet.contentSecurityPolicy({
     directives: {
