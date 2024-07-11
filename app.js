@@ -9,11 +9,10 @@ const hpp = require('hpp');
 const cookieParser = require('cookie-parser');
 const compression = require('compression');
 const cors = require('cors');
-const bodyParser = require('body-parser');
 
 const app = express();
 
-app.enable('trust proxy');
+// app.enable('trust proxy');
 app.set('view engine', 'pug');
 app.set('views', path.join(__dirname, 'views'));
 
@@ -71,7 +70,7 @@ app.use('/api', limiter);//apply for all APIs
 
 app.post(
     '/webhook-checkout',
-    bodyParser.raw({ type: 'application/json' }),
+    express.raw({ type: 'application/json' }),
     bookingController.webhookCheckout);
 
 //4. Body parser, reading data from body into req.body
