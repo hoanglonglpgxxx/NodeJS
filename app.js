@@ -38,29 +38,29 @@ app.use(cors({
 app.options('*', cors());
 // app.options('/api/v1/tours/:id', cors()); //chỉ allow cros api này
 
-// //1. Set security HTTP headers
-// app.use(helmet.contentSecurityPolicy({
-//     directives: {
-//         defaultSrc: ["'self'"],
-//         scriptSrc: [
-//             "'self'",
-//             "https://api.mapbox.com/mapbox-gl-js/v2.9.1/mapbox-gl.js",
-//             "https://cdnjs.cloudflare.com/ajax/libs/axios/1.7.2/axios.min.js",
-//             "https://js.stripe.com/v3/",
-//             "https://m.stripe.network" // Allow Stripe network requests
-//         ],
-//         workerSrc: ["'self'", "blob:"],
-//         connectSrc: [
-//             "'self'",
-//             "https://api.mapbox.com",
-//             "https://events.mapbox.com",
-//             "https://js.stripe.com/v3/",
-//             "https://m.stripe.network" // Allow connections to Stripe network
-//         ],
-//         imgSrc: ["'self'", "https://*.mapbox.com", "data:", "https://m.stripe.network"],
-//         frameSrc: ["'self'", "https://js.stripe.com/", "https://m.stripe.network"] // Allow frames from Stripe
-//     }
-// }));
+//1. Set security HTTP headers
+app.use(helmet.contentSecurityPolicy({
+    directives: {
+        defaultSrc: ["'self'"],
+        scriptSrc: [
+            "'self'",
+            "https://api.mapbox.com/mapbox-gl-js/v2.9.1/mapbox-gl.js",
+            "https://cdnjs.cloudflare.com/ajax/libs/axios/1.7.2/axios.min.js",
+            "https://js.stripe.com/v3/",
+            "https://m.stripe.network" // Allow Stripe network requests
+        ],
+        workerSrc: ["'self'", "blob:"],
+        connectSrc: [
+            "'self'",
+            "https://api.mapbox.com",
+            "https://events.mapbox.com",
+            "https://js.stripe.com/v3/",
+            "https://m.stripe.network" // Allow connections to Stripe network
+        ],
+        imgSrc: ["'self'", "https://*.mapbox.com", "data:", "https://m.stripe.network"],
+        frameSrc: ["'self'", "https://js.stripe.com/", "https://m.stripe.network"] // Allow frames from Stripe
+    }
+}));
 //2. Get detail of request
 if (process.env.NODE_ENV === 'development') {
     app.use(morgan('dev'));
