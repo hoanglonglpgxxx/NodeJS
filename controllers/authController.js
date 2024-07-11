@@ -29,7 +29,6 @@ const createSendToken = (user, statusCode, req, res) => {
 
     user.password = undefined; //remove password from output
 
-    cookieOptions.secure = req.secure || req.header['x-firwarded-photo'] === 'https'; //secure=true means will only send on https
     res.status(statusCode).json({
         status: 'success',
         token,
