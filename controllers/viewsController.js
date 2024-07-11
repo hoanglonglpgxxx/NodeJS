@@ -19,7 +19,7 @@ exports.getTour = catchAsync(async (req, res, next) => {
     });
 
     if (!tour) {
-        return next(new AppError('There is no tour with that name', 404));
+        return next(new AppError(`There is no tour with that name ${req.params.slug} ${req.params}`, 404));
     }
 
     res.status(200).render('tour', {

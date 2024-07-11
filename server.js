@@ -31,7 +31,7 @@ const server = app.listen(port, () => {
 
 //catch event unhandledRejection, xử lý cho async code, khi có lỗi chưa xử lý sẽ trigger event này
 process.on('unhandledRejection', err => {
-    console.log('UNHANDLER REJECTION! Shutting down.....');
+    console.log('UNHANDLED REJECTION! Shutting down.....');
     console.log(err.name, err.message);
     server.close(() => { //đóng server rồi mới dừng các request
         process.exit(1);
