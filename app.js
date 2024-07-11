@@ -70,9 +70,8 @@ app.use('/api', limiter);//apply for all APIs
 
 app.post(
     '/webhook-checkout',
-    express.raw({ type: 'application/json' }),
-    bookingController.webhookCheckout
-);
+    // express.raw({ type: 'application/json' }),
+    bookingController.webhookCheckout);
 
 //4. Body parser, reading data from body into req.body
 app.use(express.json({ limit: '10kb' }));
@@ -102,10 +101,7 @@ app.use((req, res, next) => {
     req.requestTime = new Date().toISOString();
     next();
 });
-//add additional body parser here
-app.use(express.text());
-app.use(express.raw());
-app.use(express.urlencoded({ extended: true }));
+
 //ROUTE
 app.use('/', viewRouter);
 app.use('/api/v1/tours', tourRouter); //method : Mounting Router
