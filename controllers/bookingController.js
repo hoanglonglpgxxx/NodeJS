@@ -23,7 +23,9 @@ exports.getCheckoutSession = catchAsync(async (req, res, next) => {
                 product_data: {
                     name: `${tour.name} Tour`,
                     description: `${tour.summary}`,
-                    images: ['https://www.natours.dev/img/tours/tour-1-cover.jpg'],
+                    images: [
+                        `${req.protocol}://${req.get('host')}/img/tours/${tour.imageCover}`
+                    ],
                 },
             },
             quantity: 1,
