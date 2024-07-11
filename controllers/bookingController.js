@@ -50,6 +50,7 @@ exports.getCheckoutSession = catchAsync(async (req, res, next) => {
 
 const createBookingCheckout = async session => {
     const tour = session.client_reference_id;
+    console.log(session, session.client_reference_id, tour);
     const user = (await User.findOne({ email: session.customer_email })).id;
     const price = (session.line_items[0].price_data.unit_amount) / 100;
     await Booking.create({ tour, user, price });
@@ -58,6 +59,7 @@ const createBookingCheckout = async session => {
 exports.webhookCheckout = (req, res, next) => {
     const signature = req.headers['stripe-signature'];
     let event;
+    console.log(req.params.slug);
     try {
         event = stripe.webhooks.constructEvent(
             req.body,
