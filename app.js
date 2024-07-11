@@ -102,7 +102,10 @@ app.use((req, res, next) => {
     req.requestTime = new Date().toISOString();
     next();
 });
-
+//add additional body parser here
+app.use(express.text());
+app.use(express.raw());
+app.use(express.urlencoded({ extended: true }));
 //ROUTE
 app.use('/', viewRouter);
 app.use('/api/v1/tours', tourRouter); //method : Mounting Router
