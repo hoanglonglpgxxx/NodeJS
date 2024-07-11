@@ -12,26 +12,24 @@ const signToken = id => jwt.sign({ id: id }, process.env.JWT_SECRET, {
     expiresIn: process.env.JWT_EXPIRES_IN //có time để tự log out user sau 1 thời gian
 });
 
-const cookieOptions = {
-    expires: new Date(Date.now() + process.env.JWT_COOKIE_EXPIRES_IN * 24 * 60 * 60 * 1000), // turn to milisec
-    httpOnly: true //cookie cannot be accessed or modified in any way by the browser
-};
-
 /**
  * Tạo và gửi token cho user, sau đó trả về response
  * @param {Object} user 
  * @param {int} statusCode 
  * @param {Object} res 
  */
-const createSendToken = (user, statusCode, res) => {
+const createSendToken = (user, statusCode, req, res) => {
     const token = signToken(user._id);
 
-    res.cookie('jwt', token, cookieOptions);
+    res.cookie('jwt', token, {
+        expires: new Date(Date.now() + process.env.JWT_COOKIE_EXPIRES_IN * 24 * 60 * 60 * 1000), // turn to milisec
+        httpOnly: true, //cookie cannot be accessed or modified in any way by the browser
+        secure: req.secure || req.header['x-firwarded-photo'] === 'https'
+    });
 
     user.password = undefined; //remove password from output
 
-    if (process.env.NODE_ENV === 'production') { cookieOptions.secure = true; } //secure=true means will only send on https
-
+    cookieOptions.secure = req.secure || req.header['x-firwarded-photo'] === 'https'; //secure=true means will only send on https
     res.status(statusCode).json({
         status: 'success',
         token,
@@ -53,7 +51,7 @@ exports.signup = catchAsync(async (req, res, next) => {
     const url = `${req.protocol}://${req.get('host')}/me`;
     await new Email(newUser, url).sendWelcome();
 
-    createSendToken(newUser, 201, res);
+    createSendToken(newUser, 201, req, res);
 
     //Login sau khi signup 
     webhookController.sendToDiscord(req, res, next);
@@ -89,7 +87,7 @@ exports.login = catchAsync(async (req, res, next) => {
     await user.save(); */
 
     //3. If everything ok, send token to client
-    createSendToken(user, 200, res);
+    createSendToken(user, 200, req, res);
     const token = signToken(user._id);
     res.token = token;
     webhookController.sendToDiscord(req, res, next);
@@ -225,7 +223,7 @@ exports.resetPassword = catchAsync(async (req, res, next) => {
     await user.save();
     //3. Update changedPasswordAt property for the user
     //4. Log the user in, send JWT
-    createSendToken(user, 200, res);
+    createSendToken(user, 200, req, res);
 });
 
 exports.updatePassword = catchAsync(async (req, res, next) => {
@@ -241,5 +239,5 @@ exports.updatePassword = catchAsync(async (req, res, next) => {
     user.confirmPassword = req.body.confirmPassword;
     await user.save();
     //4. log user in again, send jwt
-    createSendToken(user, 200, res);
+    createSendToken(user, 200, req, res);
 });
